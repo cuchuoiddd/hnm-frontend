@@ -1,0 +1,138 @@
+
+@media only screen and (max-width: 768px), (max-device-width: 768px){
+	.navbar-header,.navbar-header2{display:block;}
+	.top-nav ul li a {
+		padding: 0 5px;
+	}
+	.logo {
+		margin: 10px 0;
+		text-align: center;
+	}
+	.main-header .row > div {
+		float: left;
+		width: 100%;
+		margin: 5px 0;
+	}
+	.navbar-toggle {
+		background: #fff;
+	}
+	#main-menu {
+		margin-bottom: 5px;
+		z-index: 9999;
+	}
+	.navbar-toggle .icon-bar {
+		background: #373737;
+	}
+	.navbar-toggle:hover,
+	.navbar-toggle:active,
+	.navbar-toggle:focus {
+		background: #fff;
+	}
+	.navbar-collapse {
+		padding: 0;
+	}
+	.main-menu  li,.main-menu2  li {
+		width: 100%;
+		border-bottom: 1px solid #e3e3e3;
+		float: left;
+	}
+	.main-menu li a,.main-menu2 li a {
+		display: inline-block;
+		width: 100%;
+		padding-left: 10px;
+		padding-right: 0;
+	}
+	.sub-menu li {
+		text-align: left;
+	}
+	.feature.f-box1,
+	.feature.f-box2,
+	.feature.f-box3,
+	.feature.f-box4 {
+		padding: 0;
+		text-align: center;
+		padding: 0 15px;
+	}
+	.feature .f-icon {
+		position: static!important;
+		text-align: center!important;
+		display: inline-block;
+		margin-bottom: 15px;
+	}
+	.customer-comment .cus-thumb {
+		float: none;
+		width: 100%;
+	}
+	.customer-slider > li {
+		text-align: center;
+	}
+	.customer-comment .cus-info {
+		overflow: visible;
+	}
+	.owl-carousel .item img {
+	}
+	.wrap-partner .owl-carousel .item {
+		text-align: center;
+	}
+	.widget-form .eemail_textbox {
+		width: 70%;
+		float: left;
+	}
+	.widget-form .eemail_textbox input {
+		margin: 0;
+		width: 100%;
+	}
+	.widget-form .eemail_button {
+		width: 30%;
+		float: left;
+		color: #fff;
+	}
+	/* Sevice */
+	.sidebar {
+		margin-left: -15px!important;
+		margin-right: -15px!important;
+	}
+	.sidebar .post-imges {
+		width: 100%;
+		float: none;
+		margin-bottom: 10px;
+	}
+	.sidebar .post-imges img {
+		width: 100%;
+	}
+	.sidebar .post-info {
+		overflow: visible;
+		margin-left: 0;
+	}
+	#s-thumb {
+		padding: 0 25px;
+	}
+	#s-thumb.owl-theme .owl-controls .owl-buttons div {
+		width: 25px;
+	}
+	#s-thumb .owl-prev {
+		left: 0;
+	}
+	#s-thumb .owl-next {
+		right: 0;
+	}
+	#s-thumb .item span, #s-thumb .item p {
+		line-height: 100%;
+	}
+	.wrap-s-view {
+		padding: 0;
+	}
+	.video .video-frame {
+		width: 100%!important;
+		left: 0!important;
+	}
+	.slider .owl-item .item img {
+		min-height: 200px;
+	}
+	.main-menu2 li a{color:#000;}
+	#menu2{background-color: #fff;}
+	.header-bottom .navbar-collapse.collapse{display: none !important;}
+	.title1 li,.title1 li h2{color:#00314a;}
+	.header-bottom .navbar-collapse.collapse.show{display:block !important;}
+	.title1,.title1 li h2{background-color: #ccc;background-image: none;}
+}

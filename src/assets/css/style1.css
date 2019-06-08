@@ -1,0 +1,138 @@
+/* Thiết kế of Hạnh Hâm */
+
+.btr-menu > li > ul > li > a {
+    width: 300px;
+}
+
+
+body {
+    margin: 20px;
+}
+
+body {
+    font-size: 16px;
+}
+.tinnoibat .ndtinnoibat a {
+    font-size: 18px;
+}
+
+.nav>li>a {
+    padding: 10px 30px;
+}
+
+.dongtin li {
+    font-size: 15px;
+}
+
+#boxright .titletinmoi a {
+    text-align: center;
+    font-size: 17px;
+}
+
+.block-right h3 {
+    font-size: 14px;
+}
+
+.titboxmidle1 {
+    text-align: center;
+}
+
+.blog .block-right {
+    font-size: 15px;
+}
+
+.postmd2 li {
+ 
+    font-size: 13px;
+}
+
+.boxmiddle3 {
+    font-size: 13px;
+    text-align: justify;
+}
+
+.titboxmidle2 a {
+    font-size: 13px;
+}
+
+#info-footer {
+    color: #eee;
+}
+
+.boxmiddle1 p {
+    font-size: 14px;
+}
+
+
+
+#wraper-site {
+    width: 100%;
+}
+.box-info f-left {
+    text-align: justify;
+}
+
+.content_detail {
+    text-align: justify;
+}
+
+.boxblog group {
+    text-align: justify;
+}
+
+.group:after {
+    text-align: justify;
+}
+
+#mainleft {
+    text-align: justify;
+}
+
+#footer {
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: #00d8ff;
+    background: #00314a;
+    margin-top: 7px;
+}
+
+img {
+    border: 0;
+    width: 100%;
+}
+
+body {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 0px;
+}
+
+.titboxmidle1 {
+    text-align: left;
+}
+
+ol, ul {
+    margin-top: 0;
+    margin-bottom: 0px;
+}
+
+.titletinmoi{
+    text-align: center;
+    background-color: #175F95;
+}
+.titletinmoi a{
+    color: white;
+}
+
+
+.blog {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+.title1 {background: #175F95;}
+.title1 li h2 {background: none;}
+
+@media (max-width: 575.98px){
+    .dongtin li {line-height: 1.5}
+}

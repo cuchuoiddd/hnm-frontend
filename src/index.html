@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>HnmFrontend</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/btr-menu.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style1.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="assets/js/btr-menu.js"></script>
+    <script src="assets/js/template.js"></script>
+    <script src="assets/js/w3.js"></script>
+</head>
+
+<body>
+    <app-root></app-root>
+</body>
+<script>
+    w3.includeHTML(() => {
+        $("#menu2").btrmenu({
+            desktopsubmenuicon: true,
+            mobileiconpack: "glyphicon",
+            mobileopenicon: "glyphicon-chevron-down",
+            mobilecloseicon: "glyphicon-chevron-up",
+        });
+    });
+</script>
+</html>

@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hội người mù</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/btr-menu.css">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style1.css">
+    <!-- 	<script type="text/javascript" href="js/jquery-ui.min.js"></script>
+<script type="text/javascript" href="js/jquery-core.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="/js/btr-menu.js"></script>
+    <script src="/js/template.js"></script>
+    <script src="/js/w3.js"></script>
+</head>
+
+<body>
+<div id="wraper-site" class="container">
+    <div w3-include-html="/module/header.html"></div>
+
+    <div id="boxmain" class="row">
+        <div w3-include-html="/danh-sach/modules/tap-chi-doi-moi.html"></div>
+        <div w3-include-html="/module/main-middle.html"></div>
+        <!--  <div w3-include-html="/module/main-right.html"></div>  -->
+    </div>
+</div>
+<div w3-include-html="/module/footer.html"></div>
+<script>
+    w3.includeHTML(() => {
+        $("#menu2").btrmenu({
+            desktopsubmenuicon: true,
+            mobileiconpack: "glyphicon",
+            mobileopenicon: "glyphicon-chevron-down",
+            mobilecloseicon: "glyphicon-chevron-up",
+        });
+    });
+</script>
+
+</html>
