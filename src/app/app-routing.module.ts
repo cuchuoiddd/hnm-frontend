@@ -7,6 +7,7 @@ import { ChiTietComponent } from './chi-tiet/chi-tiet.component';
 const routes: Routes = [
     { path: '', component: TrangChuComponent },
     { path: 'danh-sach/:id', component: DanhSachComponent },
+    { path: ':id', component: DanhSachComponent },
     { path: 'chi-tiet/:id', component: ChiTietComponent },   
     { path: '**', redirectTo: '' }
 ];

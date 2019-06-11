@@ -1,13 +1,9 @@
 <div id="boxleft" class="row">
     <div class="block-left col-md-6 col-sm-6 col-xs-12">
-        <a href="#"><img src="assets/images/tet.jpg" alt="Thư chúc mừng năm mới 2019" /></a>
+        <a href="#"><img src="{{url_mac_dinh}}/{{tin_moi_nhat ? tin_moi_nhat.hinh_anh : ''}}" alt="{{tin_moi_nhat ? tin_moi_nhat.tieu_de : ''}}" /></a>
         <div class="ndtinnoibat">
-            <a class="title" href="#"><b>Thư chúc mừng năm mới 2019</b></a>
-            <p align="justify">Nhân dịp đón mừng năm mới 2019 và xuân Kỷ Hợi, thay mặt Ban Thường vụ Trung
-                ương
-                Hội Người mù Việt Nam, tôi thân ái gửi đến toàn thể cán bộ, hội viên trong toàn Hội những
-                tình
-                cảm thân thiết và lời chúc mừng tốt đẹp nhất.</p>
+            <a class="title" href="#"><b>{{tin_moi_nhat ? tin_moi_nhat.tieu_de : ""}}</b></a>
+            <p align="justify">{{tin_moi_nhat ? tin_moi_nhat.mo_ta : ""}}</p>
         </div>
     </div>
 
@@ -15,17 +11,15 @@
         <div class="tinmoi">
             <h2 class="titletinmoi group"><a>Tin mới nhất</a></h2>
             <ul class="dongtin">
-                <li>
-                    <a href="#"><b>TW Hội tọa đàm với cán bộ, ban ngành đoàn thể</b></a>
-                    <p>Nhân dịp đón mừng năm mới Kỉ Hợi (2019), ngày 24-1, TW Hội đã tổ chức buổi tọa đàm
-                        với
-                        các Bộ, ban ngành, đoàn thể Trung ương.</p>
+                <li *ngFor="let item of ds_tin_moi, let i = index">
+                    <a [routerLink]="[item.url]" routerLinkActive="router-link-active" ><b>{{item.tieu_de}}</b></a>
+                    <p *ngIf="i==0">{{item.mo_ta}}</p>
                 </li>
-                <li><a href="">Hội nghị tổng kết công tác Hội tại Vĩnh Phúc </a></li>
+                <!-- <li><a href="">Hội nghị tổng kết công tác Hội tại Vĩnh Phúc </a></li>
                 <li><a href="">Tỉnh hội Quảng Trị tổ chức hội nghị tổng kết </a></li>
                 <li><a href="">Hoạt động chăm sóc, tặng quà Tết cho hội viên và người mù</a></li>
                 <li><a href="">Mang ánh sáng tri thức đến với người mù </a></li>
-                <li><a href="">Một số mẹo làm tăng tuổi thọ của pin điện thoại </a></li>
+                <li><a href="">Một số mẹo làm tăng tuổi thọ của pin điện thoại </a></li> -->
             </ul>
         </div>
     </div>
@@ -35,32 +29,25 @@
 </div>
 <div id="mainleft" class="content-left row">
 
-    <div class="boxblog group">
+    <div class="boxblog group" *ngFor="let item of ds_chuyen_muc">
         <ul class="title1">
             <li>
-                <h2>Hoạt động của hội</h2>
+                <h2>{{item.ten}}</h2>
             </li>
         </ul>
 
         <div class="blog group">
             <div class="block-left col-md-6 col-sm-6 col-xs-12">
-                <a href="#"><img src="assets/images/tet.jpg" alt="Thư chúc mừng năm mới 2019" /></a>
-                <a href="#"><b>TW Hội tọa đàm với cán bộ, ban ngành đoàn thể</b></a>
-                <p>Nhân dịp đón mừng năm mới Kỉ Hợi (2019), ngày 24-1, TW Hội đã tổ chức buổi tọa đàm với
-                    các Bộ, ban ngành, đoàn thể Trung ương.</p>
+                <a href="#"><img src="{{url_mac_dinh}}/{{item.bai_viet.url}}" alt="Thư chúc mừng năm mới 2019" /></a>
+                <a href="#"><b>{{ds_chuyen_muc.bai_viet ? ds_chuyen_muc.bai_viet[0].tieu_de : ""}}</b></a>
+                <p>{{ds_chuyen_muc.bai_viet ? ds_chuyen_muc.bai_viet[0].mo_ta : ""}}</p>
             </div>
 
             <div class="block-right col-md-6 col-sm-6 col-xs-12">
                 <div class="tinmoi">
                     <ul class="dongtin">
-                        <li>
-                            <a href="#"><b>TW Hội tọa đàm với cán bộ, ban ngành đoàn thể</b></a>
-                        </li>
-                        <li><a href="">Hội nghị tổng kết công tác Hội tại Vĩnh Phúc </a></li>
-                        <li><a href="">Tỉnh hội Quảng Trị tổ chức hội nghị tổng kết </a></li>
-                        <li><a href="">Hoạt động chăm sóc, tặng quà Tết cho hội viên và người mù</a></li>
-                        <li><a href="">Mang ánh sáng tri thức đến với người mù </a></li>
-                        <li><a href="">Một số mẹo làm tăng tuổi thọ của pin điện thoại </a></li>
+                        <li *ngFor="let item1 of item.bai_viet"><a [routerLink]="item1.url" routerLinkActive="router-link-active" >{{item1.tieu_de}}</a></li>
+                        
                     </ul>
                 </div>
             </div>

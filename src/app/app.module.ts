@@ -18,7 +18,6 @@ import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 
 const appConfig: GdkConfigUrl = {
     urlBaseServer: 'http://3114.gdk.com.vn:3116'
-
 };
 @NgModule({
     declarations: [

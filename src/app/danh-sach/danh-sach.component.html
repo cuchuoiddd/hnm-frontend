@@ -1,23 +1,24 @@
 <div class="boxblog group">
-        <ul class="title1">
-            <li>
-                <h2>Lao động việc làm </h2>
-            </li>
-        </ul>
+    <ul class="title1">
+        <li>
+            <h2>{{ten_chuyen_muc}} </h2>
+        </li>
+    </ul>
 
-        <div class="blog group">
-            <div class="block-left col-md-4 col-sm-4 col-xs-4"><a href="#"><img src="assets/images/tet.jpg" alt=""></a>
-            </div>
-            <div class="block-right col-md-8 col-sm-8 col-xs-8">
-                <h3>
-                    <a href="">Hoạt động chăm sóc, tặng quà Tết cho hội viên và người mù</a>
-                </h3>
-                <p>Nhân dịp Tết nguyên đán Kỷ Hợi 2019, nhiều cấp Hội trong cả nước đã vận động và tổ chức thăm hỏi,
-                    tặng quà nhằm mang đến cho hội viên và người mù một cái Tết đầy đủ, ấm áp.</p>
-            </div>
+    <div class="blog group" *ngFor="let item of data">
+        <div class="block-left col-md-4 col-sm-4 col-xs-4"><a href="#"><img src="{{url_mac_dinh}}/{{item.bai_viet.url}}"
+                    alt=""></a>
         </div>
-
-        <div class="blog group">
+        <div class="block-right col-md-8 col-sm-8 col-xs-8">
+            <h3>
+                <a href="">{{item.bai_viet.tieu_de}}</a>
+            </h3>
+            <p>{{item.bai_viet.mo_ta}}</p>
+        </div>
+    </div>
+    <!-- <eui-pagination [total]="total" [pageSize]="pageSize" [pageNumber]="pageNumber"
+        (pageChange)="onPageChange($event)"></eui-pagination> -->
+    <!-- <div class="blog group">
             <div class="block-left col-md-4 col-sm-4 col-xs-4"><a href="#"><img src="assets/images/tet.jpg" alt=""></a>
             </div>
             <div class="block-right col-md-8 col-sm-8 col-xs-8">
@@ -133,6 +134,6 @@
                     Trường Trung cấp nghề
                     Cam Ranh được khai giảng vào ngày 15-9.</p>
             </div>
-        </div>
+        </div> -->
 
-    </div>
+</div>
