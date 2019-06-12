@@ -1,11 +1,11 @@
 <div id="wraper-site" class="container">
-    <app-header></app-header>
+    <app-header #header></app-header>
 
-    <div class="row" id="dattime">Hôm nay, ngày tháng năm 2019</div>
+    <div class="row" id="dattime">Hôm nay, ngày {{ngay}} tháng {{thang}} năm {{nam}}</div>
 
     <div id="boxtintuc" class="content row">
         <div class="col-md-8 col-sm-12"> <router-outlet></router-outlet></div>
         <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs"> <app-content-right></app-content-right></div>
     </div>
 </div>
-<app-footer></app-footer>
+<app-footer #footer></app-footer>

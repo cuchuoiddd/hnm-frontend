@@ -1,13 +1,14 @@
-import { Component, OnInit, SimpleChanges, OnChanges, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GdkHttpClientService } from '@gdkmd/httpxhd';
+import { async } from '@angular/core/testing';
 
 @Component({
     selector: 'app-danh-sach',
     templateUrl: './danh-sach.component.html',
     styleUrls: ['./danh-sach.component.scss']
 })
-export class DanhSachComponent implements OnInit {
+export class DanhSachComponent implements OnInit, OnDestroy {
     total: number = 0;
     pageNumber: number = 1;
     pageSize: number = 20;
@@ -15,6 +16,19 @@ export class DanhSachComponent implements OnInit {
     data = [];
     url_mac_dinh = 'http://hoi-nguoi-mu.gdk.com.vn';
     ten_chuyen_muc = '';
+    @ViewChild('bai_viet') bai_viet;
+    @ViewChild('hinh_anh') hinh_anh;
+    @ViewChild('video') video;
+    @ViewChild('audio') audio;
+    @ViewChild('download') download;
+    @ViewChild('chi_tiet') chi_tiet;
+    action_bai_viet: boolean = false;
+    action_hinh_anh: boolean = false;
+    action_video: boolean = false;
+    action_audio: boolean = false;
+    action_download: boolean = false;
+    action_chi_tiet: boolean = false;
+
     constructor(private route: ActivatedRoute, private router: Router, private gdkClient: GdkHttpClientService) {
         this.param = this.route.snapshot.params.id;
         // if(this.param != '123'){
@@ -22,9 +36,10 @@ export class DanhSachComponent implements OnInit {
         // }
     }
     ngOnInit() {
+        this.dsBaiViet();
         this.param = this.route.snapshot.paramMap.get('id');
         this.route.paramMap.subscribe(params => {
-            console.log(params['params'].id)
+            this.resetData();
             this.param = params['params'].id;
             this.dsBaiViet();
         })
@@ -48,9 +63,69 @@ export class DanhSachComponent implements OnInit {
         }).subscribe(s => {
             console.log(123131, s);
             if (s.ok && s.data.length > 0) {
-                this.data = s.data;
                 this.ten_chuyen_muc = s.data[0].ten;
-            } else { this.data = []; this.router.navigate([''])}
+                const phan_loai = s.data[0].phan_loai;
+                switch (phan_loai) {
+                    case "bai_viet":
+                        this.action_bai_viet = true;
+                        setTimeout(() => {
+                            this.bai_viet.data = s.data;
+                            this.bai_viet.total = this.total;
+                        });
+                        break;
+                    case "hinh_anh":
+                        this.action_hinh_anh = true;
+                        setTimeout(() => {
+                            this.hinh_anh.data = s.data;
+                            this.hinh_anh.total = this.total;
+                        });
+                        break;
+                    case "video":
+                        this.action_video = true;
+                        setTimeout(() => {
+                            this.video.data = s.data;
+                            this.video.total = this.total;
+                            this.video.tin_moi = s.data[0];
+                        });
+                        break;
+                    case "audio":
+                        this.action_audio = true;
+                        setTimeout(() => {
+                            this.audio.data = s.data;
+                            this.audio.total = this.total;
+                        });
+                        break;
+                    case "link_tai":
+                        this.action_download = true;
+                        setTimeout(() => {
+                            this.download.data = s.data;
+                            this.download.total = this.total;
+                            this.download.tin_moi = s.data[0];
+
+                        });
+                        break;
+                    case "gioi_thieu":
+                        this.action_chi_tiet = true;
+                        setTimeout(() => {
+                            this.chi_tiet.tin_moi = s.data[0];
+                        });
+                        break;
+                    default:
+                        this.router.navigate([''])
+                        break;
+                }
+            } else { this.data = []; }
         })
+    }
+    resetData() {
+        this.action_bai_viet = false;
+        this.action_hinh_anh = false;
+        this.action_video = false;
+        this.action_audio = false;
+        this.action_download = false;
+        this.action_chi_tiet = false;
+    }
+    ngOnDestroy(){
+
     }
 }

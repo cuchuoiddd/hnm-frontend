@@ -9,12 +9,18 @@ import { MainMiddleComponent } from './main-middle/main-middle.component';
 import { DanhSachComponent } from './danh-sach/danh-sach.component';
 import { ContentLetfComponent } from './content-letf/content-letf.component';
 import { ContentRightComponent } from './content-right/content-right.component';
-import { ChiTietComponent } from './chi-tiet/chi-tiet.component';
 import { TrangChuComponent } from './trang-chu/trang-chu.component';
 import { GdkConfigUrl, GdkHttpClientConfigModule } from '@gdkmd/httpxhd';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { EasyUIModule } from 'ng-easyui';
+import { BaiVietComponent } from './danh-sach/bai-viet/bai-viet.component';
+import { VideoComponent } from './danh-sach/video/video.component';
+import { AudioComponent } from './danh-sach/audio/audio.component';
+import { DownloadComponent } from './danh-sach/download/download.component';
+import { HinhAnhComponent } from './danh-sach/hinh-anh/hinh-anh.component';
+import { ChiTietComponent } from './danh-sach/chi-tiet/chi-tiet.component';
 
 const appConfig: GdkConfigUrl = {
     urlBaseServer: 'http://3114.gdk.com.vn:3116'
@@ -29,12 +35,18 @@ const appConfig: GdkConfigUrl = {
         ContentLetfComponent,
         ContentRightComponent,
         ChiTietComponent,
-        TrangChuComponent
+        TrangChuComponent,
+        BaiVietComponent,
+        VideoComponent,
+        AudioComponent,
+        DownloadComponent,
+        HinhAnhComponent
     ],
     imports: [
-        BrowserModule,
+BrowserModule,
         AppRoutingModule,
         HttpClientModule,
+        EasyUIModule,
         GdkHttpClientConfigModule.forRoot(appConfig),
         TranslateModule.forRoot({
             loader: {

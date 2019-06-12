@@ -1,0 +1,12 @@
+<div class="boxblog group">
+    <ul class="title1">
+        <li>
+            <h2>{{tin_moi.ten ? tin_moi.ten : ""}}</h2>
+        </li>
+    </ul>
+    <div class="content_detail">
+        <div class="box-info f-left" [innerHTML]="tin_moi && tin_moi.bai_viet ? tin_moi.bai_viet.noi_dung :''">
+            <!-- {{tin_moi && tin_moi.bai_viet ? tin_moi.bai_viet.noi_dung : ""}} -->
+        </div>
+    </div>
+</div>

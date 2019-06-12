@@ -8,6 +8,8 @@ import { GdkHttpClientService } from '@gdkmd/httpxhd';
 })
 export class HeaderComponent implements OnInit {
     data_menu = [];
+    data = {};
+    url_mac_dinh = 'http://hoi-nguoi-mu.gdk.com.vn';
     constructor(private gdkClient: GdkHttpClientService) { }
 
     ngOnInit() {
@@ -39,10 +41,8 @@ export class HeaderComponent implements OnInit {
                 reqid: '16b40b7fcea'
             }
         }).subscribe(s => {
-            console.log(123123, s);
             if (s.ok) {
                 this.data_menu = this.buildMenu(s.data);
-                console.log(this.buildMenu(s.data))
             }
         })
     }
