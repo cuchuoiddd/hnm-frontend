@@ -28,8 +28,6 @@ export class AppComponent implements OnInit {
                 reqid: '16b4b1324cb'
             }
         }).subscribe(s => {
-            console.log(123123121112313131, s);
-
             if (s.ok) {
                 this.header.data = s.data;
                 this.footer.data = s.data;

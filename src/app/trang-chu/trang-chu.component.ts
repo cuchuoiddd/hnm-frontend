@@ -19,7 +19,7 @@ export class TrangChuComponent implements OnInit {
 
     ngOnInit() {
         this.dsChuyenMuc();
-        this.dsTinMoi();
+        this.dsTinMoiNhat();
         setTimeout(() => {
             this.min_height = this.heightScreen.nativeElement.offsetHeight;
             console.log(1231321,this.heightScreen);
@@ -33,14 +33,12 @@ export class TrangChuComponent implements OnInit {
                 reqid: '16b444ff422'
             }
         }).subscribe(s => {
-            console.log(123, s);
-
             if (s.ok) {
                 this.ds_chuyen_muc = s.data;
             } else { this.ds_chuyen_muc = []; }
         })
     }
-    dsTinMoi() {
+    dsTinMoiNhat() {
         this.gdkClient.queryPublicData({
             reqData: {
                 reqid: '16b44583d45'

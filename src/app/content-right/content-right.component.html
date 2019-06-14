@@ -1,23 +1,19 @@
 <div id="qcbanner" class="row">
     <div class="boxmiddle2">
-        <a title="" href="#">Xem tất cả</a>
+        
         <div class="contentmiddle2">
             <div id="iframevideo">
-                <iframe width="100%" height="auto" src="https://www.youtube.com/embed/yaT3_WFkvI4" frameborder="0"
+                <iframe width="100%" height="auto" [src]="safeSrc" frameborder="0"
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <!-- <iframe width="100%" height="auto" src="{{video_moi_nhat['bai_viet'].video}}" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
             </div>
             <ul class="postmd2">
-                <li><a title="" href="">Giới thiệu về phim dành cho người khiếm thị trên VTV4 </a></li>
-                <li><a title="" href="">Hội Người mù Việt Nam: Luồng gió mới trong phong trào hoạt động </a>
-                </li>
-                <li><a title="" href="">Nguồn sáng đời em - Phần dự thi của thí sinh Nguyễn Võ Trúc Phương
-                        tại
-                        Chương
-                        trình Đường đến danh ca vọng cổ </a></li>
-                <li><a title="" href="">Thắp sáng niềm tin và khát vọng hòa nhập cộng đồng </a></li>
-                <li><a title="" href="">Phóng sự 45 năm hội người mù Việt Nam </a></li>
-                <li><a title="" href="">Hội người mù Việt Nam - Dấu ấn một nhiệm kỳ </a></li>
+                <li *ngFor="let item of ds_video"><a title="" href="">{{item.bai_viet.tieu_de}}</a></li>
             </ul>
+        </div>
+        <div class="text-right">
+            <a title="" href="#">Xem tất cả</a>
         </div>
     </div>
 

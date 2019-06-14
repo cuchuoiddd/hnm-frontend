@@ -2,26 +2,25 @@
 
         <div class="boxmiddle1">
             <div class="titboxmidle1">
-                <a title="Bấm vào đây để xem thư viện ảnh" href="#">Thư viện hình ảnh</a>
+                <a title="Bấm vào đây để xem thư viện ảnh" [routerLink]="[thu_vien_hinh_anh ? thu_vien_hinh_anh.url : '']" routerLinkActive="router-link-active" >{{thu_vien_hinh_anh.ten ? thu_vien_hinh_anh.ten : ""}}</a>
             </div>
             <a data-toggle="modal" data-target="#myModal">
-                <img src="assets/images/scan0002.jpg" alt="Hưởng ứng ngày cây gậy trắng quốc tế"></a>
-            <p>Hưởng ứng ngày cây gậy trắng quốc tế</p>
+                <img src="{{url_mac_dinh}}/{{thu_vien_hinh_anh.bai_viet.hinh_anh}}" alt="{{thu_vien_hinh_anh.bai_viet.tieu_de ? thu_vien_hinh_anh.bai_viet.tieu_de : ''}}">
+            </a>
+            <p>{{thu_vien_hinh_anh.bai_viet.tieu_de ? thu_vien_hinh_anh.bai_viet.tieu_de : ""}}</p>
         </div>
     
-        <div class="boxmiddle3">
+        <div class="boxmiddle3" *ngFor="let item of chuyen_muc_khac">
             <div class="titboxmidle3">
-                <a title="" href="#">Khoa học đời sống</a>
+                <a title="" [routerLink]="[item.url]" routerLinkActive="router-link-active" >{{item.ten}}</a>
             </div>
-            <div class="contentmiddle3">
-                <a href="">
-                    <strong>Một số mẹo làm tăng tuổi thọ của pin điện thoại / </strong>
+            <div class="contentmiddle3" *ngFor="let item1 of item.bai_viet">
+                <a [routerLink]="[item1.url]" routerLinkActive="router-link-active" >
+                    <strong>{{item1.tieu_de}} </strong>
                 </a>
-                <p>Tăng tuổi thọ cho pin điện thoại không phải là chuyện đơn giản. Tuy nhiên, nếu bạn tuân thủ những cách
-                    dưới đây, việc kéo
-                    dài thời gian cho pin sẽ trở nên dễ dàng hơn.</p>
+                <p>{{item1.mo_ta}}</p>
             </div>
-            <div class="contentmiddle3">
+            <!-- <div class="contentmiddle3">
                 <a href="">
                     <strong>Nhược thị - Nguyên nhân và cách điều trị / </strong>
                 </a>
@@ -36,10 +35,10 @@
                 <p>Nhiều việc làm của các bà mẹ tưởng chừng như tốt cho trẻ nhưng ngược lại nó còn gây ra những tác hại xấu.
                     Hãy cùng
                     chuyên gia điểm danh 5 sai lầm khiến trẻ hay ốm vào mùa lạnh để cải thiện cho bé nhà...</p>
-            </div>
+            </div> -->
         </div>
     
-        <div class="boxmiddle3">
+        <!-- <div class="boxmiddle3">
             <div class="titboxmidle3">
                 <a title="" href="#">Gương chiếu hình</a>
             </div>
@@ -84,10 +83,9 @@
             </div>
     
             <div class="contentmiddle3">
-                <!-- <a href=""><img src="/images/011.jpg" alt="Tặng quà Tết cho người mù khó khăn" /> </a>  -->
                 <a href="">Tặng quà Tết cho người mù khó khăn </a>
     
             </div>
-        </div>
+        </div> -->
     
     </div>

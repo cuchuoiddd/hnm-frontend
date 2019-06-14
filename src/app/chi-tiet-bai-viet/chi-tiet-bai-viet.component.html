@@ -1,0 +1,17 @@
+<div *ngIf="data">
+    <div class="boxblog group" *ngFor="let item of data">
+        <ul class="title1">
+            <li>
+                <h2>{{item.tieu_de ? item.tieu_de : ""}}</h2>
+            </li>
+        </ul>
+        <div class="content_detail">
+            <div class="box-info f-left" [innerHTML]="item ? item.noi_dung :''">
+                <!-- {{tin_moi && tin_moi.bai_viet ? tin_moi.bai_viet.noi_dung : ""}} -->
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="data.length == 0">
+    Chưa có bản ghi nào!
+</div>
