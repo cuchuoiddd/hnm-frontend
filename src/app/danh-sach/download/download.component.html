@@ -1,7 +1,7 @@
 <div class="boxblog group">
     <ul class="title1">
         <li>
-                <h2>{{tin_moi.ten}}</h2>
+                <h2>{{tin_moi[0].ten}}</h2>
         </li>
     </ul>
     <div class="blog group" *ngFor="let item of data">
@@ -10,7 +10,7 @@
                 <a [routerLink]="[item.bai_viet.url]">{{item.bai_viet.tieu_de}}</a>
             </h3>
         </div>
-        <p class="readmore"><a [routerLink]="[item.bai_viet.url]">Tải về</a></p>
+        <p class="readmore"><a [routerLink]="[item.bai_viet.url]" download>Tải về</a></p>
     </div>
 
 </div>

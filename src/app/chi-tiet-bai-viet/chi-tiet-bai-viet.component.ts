@@ -28,8 +28,6 @@ export class ChiTietBaiVietComponent implements OnInit {
                 parms: [this.param_id, this.param_chuyen_muc]
             }
         }).subscribe(s => {
-            console.log(2342423,s);
-            
             if (s.ok && s.data.length > 0) {
                 this.data = s.data;
             } else this.data = [];

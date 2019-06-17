@@ -28,9 +28,16 @@ export class AppComponent implements OnInit {
                 reqid: '16b4b1324cb'
             }
         }).subscribe(s => {
-            if (s.ok) {
+            if (s.ok && s.data.length >0) {
                 this.header.data = s.data;
                 this.footer.data = s.data;
+            } else {
+                this.header.data = [{
+                    banner:''
+                }];
+                this.footer.data = [{
+                    footer:''
+                }];
             }
         })
     }

@@ -7,10 +7,13 @@ import { GdkHttpClientService } from '@gdkmd/httpxhd';
     styleUrls: ['./main-middle.component.scss']
 })
 export class MainMiddleComponent implements OnInit {
-    thu_vien_hinh_anh = {
-        ten: '',
-        bai_viet: { tieu_de: '', hinh_anh: '' }
-    };
+    thu_vien_hinh_anh = [
+        {
+            ten: '',
+            bai_viet: { tieu_de: '', hinh_anh: '' },
+            url: ''
+        }
+    ];
     chuyen_muc_khac = [];
     url_mac_dinh = 'http://hoi-nguoi-mu.gdk.com.vn';
     constructor(private gdkClient: GdkHttpClientService) { }
@@ -25,13 +28,9 @@ export class MainMiddleComponent implements OnInit {
                 reqid: '16b54162b1e'
             }
         }).subscribe(s => {
-            console.log(4234234, s);
-
-            if (s.ok && s.data.length > 0) { this.thu_vien_hinh_anh = s.data[0] }
+            if (s.ok && s.data.length > 0) { this.thu_vien_hinh_anh = s.data }
             else {
-                this.thu_vien_hinh_anh = { ten: 'THƯ VIỆN HÌNH ẢNH', bai_viet: { tieu_de: "Tiêu đề", hinh_anh: "mac_dinh" } }
-                console.log(this.thu_vien_hinh_anh.bai_viet.tieu_de);
-
+                this.thu_vien_hinh_anh = [{ ten: 'THƯ VIỆN HÌNH ẢNH', bai_viet: { tieu_de: "Tiêu đề", hinh_anh: "mac_dinh" }, url: 'mac_dinh' }]
             }
         })
     }

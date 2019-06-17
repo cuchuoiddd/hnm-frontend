@@ -8,7 +8,9 @@ import { GdkHttpClientService } from '@gdkmd/httpxhd';
 })
 export class HeaderComponent implements OnInit {
     data_menu = [];
-    data = {};
+    data = [{
+        banner:''
+    }];
     url_mac_dinh = 'http://hoi-nguoi-mu.gdk.com.vn';
     constructor(private gdkClient: GdkHttpClientService) { }
 

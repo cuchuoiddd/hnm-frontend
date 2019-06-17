@@ -25,9 +25,7 @@ export class ContentRightComponent implements OnInit {
                 this.ds_video = s.data;
                 const video = s.data[0].bai_viet.video;
                 this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(video);
-                // console.log(234234,this.video.changingThisBreaksApplicationSecurity);
-                
-            } else { this.ds_video = []; }
+            } else { this.ds_video = []; this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/yaT3_WFkvI4')}
         })
     }
 

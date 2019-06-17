@@ -10,7 +10,7 @@ export class DownloadComponent implements OnInit {
     total: number = 0;
     pageNumber: number = 1;
     pageSize: number = 20;
-    tin_moi = {};
+    tin_moi = [];
   constructor() { }
 
   ngOnInit() {

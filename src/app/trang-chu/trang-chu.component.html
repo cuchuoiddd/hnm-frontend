@@ -1,10 +1,10 @@
 <div #heightScreen id="boxleft" class="row">
     <div class="block-left col-md-6 col-sm-6 col-xs-12">
-        <a href="#"><img src="{{url_mac_dinh}}/{{tin_moi_nhat ? tin_moi_nhat.hinh_anh : ''}}" alt="{{tin_moi_nhat ? tin_moi_nhat.tieu_de : ''}}" /></a>
+        <a href="#"><img src="{{url_mac_dinh}}/{{tin_moi_nhat ? tin_moi_nhat[0].hinh_anh : ''}}" alt="{{tin_moi_nhat ? tin_moi_nhat[0].tieu_de : ''}}" /></a>
         <div class="ndtinnoibat">
-            <a class="title" [routerLink]="[tin_moi_nhat.thuoc_chuyen_muc.url + '/' + tin_moi_nhat.url]"
-                routerLinkActive="router-link-active"><b>{{tin_moi_nhat ? tin_moi_nhat.tieu_de : ""}}</b></a>
-            <p align="justify">{{tin_moi_nhat ? tin_moi_nhat.mo_ta : ""}}</p>
+            <a class="title" [routerLink]="[tin_moi_nhat[0].thuoc_chuyen_muc.url + '/' + tin_moi_nhat[0].url]"
+                routerLinkActive="router-link-active"><b>{{tin_moi_nhat ? tin_moi_nhat[0].tieu_de : ""}}</b></a>
+            <p align="justify">{{tin_moi_nhat ? tin_moi_nhat[0].mo_ta : ""}}</p>
         </div>
     </div>
 

@@ -1,6 +1,8 @@
-<app-bai-viet #bai_viet *ngIf="action_bai_viet"></app-bai-viet>
+<div class="boxblog">
+<app-bai-viet #bai_viet *ngIf="action_bai_viet" (PageChange)="PageChange"></app-bai-viet>
 <app-audio #audio *ngIf="action_audio"></app-audio>
 <app-video #video *ngIf="action_video"></app-video>
 <app-hinh-anh #hinh_anh *ngIf="action_hinh_anh"></app-hinh-anh>
 <app-download #download *ngIf="action_download"></app-download>
 <app-chi-tiet #chi_tiet *ngIf="action_chi_tiet"></app-chi-tiet>
+</div>

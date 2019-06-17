@@ -1,91 +1,23 @@
 <div id="mainmiddle">
-
-        <div class="boxmiddle1">
-            <div class="titboxmidle1">
-                <a title="Bấm vào đây để xem thư viện ảnh" [routerLink]="[thu_vien_hinh_anh ? thu_vien_hinh_anh.url : '']" routerLinkActive="router-link-active" >{{thu_vien_hinh_anh.ten ? thu_vien_hinh_anh.ten : ""}}</a>
-            </div>
-            <a data-toggle="modal" data-target="#myModal">
-                <img src="{{url_mac_dinh}}/{{thu_vien_hinh_anh.bai_viet.hinh_anh}}" alt="{{thu_vien_hinh_anh.bai_viet.tieu_de ? thu_vien_hinh_anh.bai_viet.tieu_de : ''}}">
-            </a>
-            <p>{{thu_vien_hinh_anh.bai_viet.tieu_de ? thu_vien_hinh_anh.bai_viet.tieu_de : ""}}</p>
+    <div class="boxmiddle1">
+        <div class="titboxmidle1">
+            <a title="Bấm vào đây để xem thư viện ảnh" [routerLink]="[thu_vien_hinh_anh ? thu_vien_hinh_anh[0].url : '']" routerLinkActive="router-link-active" >{{thu_vien_hinh_anh[0].ten ? thu_vien_hinh_anh[0].ten : ""}}</a>
         </div>
-    
-        <div class="boxmiddle3" *ngFor="let item of chuyen_muc_khac">
-            <div class="titboxmidle3">
-                <a title="" [routerLink]="[item.url]" routerLinkActive="router-link-active" >{{item.ten}}</a>
-            </div>
-            <div class="contentmiddle3" *ngFor="let item1 of item.bai_viet">
-                <a [routerLink]="[item1.url]" routerLinkActive="router-link-active" >
-                    <strong>{{item1.tieu_de}} </strong>
-                </a>
-                <p>{{item1.mo_ta}}</p>
-            </div>
-            <!-- <div class="contentmiddle3">
-                <a href="">
-                    <strong>Nhược thị - Nguyên nhân và cách điều trị / </strong>
-                </a>
-                <p>Nhược thị là tình trạng giảm thị lực không thể cải thiện được bằng cách đeo kính hoặc dùng kính sát tròng
-                    và cũng không do bất kỳ
-                    bệnh nào về mắt gây ra. Theo thống kê có khoảng 3% trẻ em dưới 6 tuổi...</p>
-            </div>
-            <div class="contentmiddle3">
-                <a href="">
-                    <strong>5 sai lầm của các bà mẹ khiến trẻ hay ốm vào mùa lạnh</strong>
-                </a>
-                <p>Nhiều việc làm của các bà mẹ tưởng chừng như tốt cho trẻ nhưng ngược lại nó còn gây ra những tác hại xấu.
-                    Hãy cùng
-                    chuyên gia điểm danh 5 sai lầm khiến trẻ hay ốm vào mùa lạnh để cải thiện cho bé nhà...</p>
-            </div> -->
-        </div>
-    
-        <!-- <div class="boxmiddle3">
-            <div class="titboxmidle3">
-                <a title="" href="#">Gương chiếu hình</a>
-            </div>
-            <div class="contentmiddle3">
-                <a href="">
-                    <strong>Cô gái khiếm thị và ước mơ trở thành nhà báo </strong>
-                </a>
-                <p> Gặp em lần đầu tiên tại lớp cộng tác viên báo chí K76 do Trung tâm Đào tạo Phục hồi chức năng
-                    cho người mù tổ chức, ấn tượng đầu tiên của tôi về em đó là cô gái tràn đầy năng lượng, sự lạc quan,
-                    tự...</p>
-            </div>
-    
-            <div class="contentmiddle3">
-                <a href="">
-                    <strong>Thoát nghèo từ mô hình tráng bánh đa</strong>
-                </a>
-                <p>Được tham gia vào tổ chức hội, được học chữ, học nghề rồi có thêm đồng vốn cùng với sự cố gắng và nghị
-                    lực của bản thân, anh Đặng Quý Tỵ ở xã Kỳ Châu, huyện Kỳ Anh tỉnh Hà Tĩnh đã vượt qua những khó...</p>
-            </div>
-    
-            <div class="contentmiddle3">
-                <a href="">
-                    <strong>Người thương binh tài hoa</strong>
-                </a>
-                <p> Mới đấy mà đã tròn 40 năm kể từ ngày tôi bị thương và thành người thương binh khiếm thị. Những cung bậc
-                    của cảm xúc trong suốt chặng đường 40 năm qua lại hiện về khiến tôi vừa rưng rưng xúc động lại...</p>
-            </div>
-        </div>
-    
-        <div class="boxmiddle3">
-            <div class="titboxmidle3">
-                <a title="" href="#"> ỦNG HỘ TỪ THIỆN </a>
-            </div>
-    
-            <div class="contentmiddle3">
-                <div><a href=""><img src="assets/images/10003.jpg" alt="Một số hoạt động từ thiện tại các địa phương" /></a></div>
-                <a href="">Một số hoạt động từ thiện tại các địa phương </a>
-            </div>
-    
-            <div class="contentmiddle3">
-                <a href="">Hoạt động từ thiện tại Bắc Giang</a>
-            </div>
-    
-            <div class="contentmiddle3">
-                <a href="">Tặng quà Tết cho người mù khó khăn </a>
-    
-            </div>
-        </div> -->
-    
+        <a data-toggle="modal" data-target="#myModal">
+            <img src="{{url_mac_dinh}}/{{thu_vien_hinh_anh[0].bai_viet.hinh_anh}}" alt="{{thu_vien_hinh_anh[0].bai_viet.tieu_de ? thu_vien_hinh_anh[0].bai_viet.tieu_de : ''}}">
+        </a>
+        <p>{{thu_vien_hinh_anh[0].bai_viet.tieu_de ? thu_vien_hinh_anh[0].bai_viet.tieu_de : ""}}</p>
     </div>
+
+    <div class="boxmiddle3" *ngFor="let item of chuyen_muc_khac">
+        <div class="titboxmidle3">
+            <a title="" [routerLink]="[item.url]" routerLinkActive="router-link-active" >{{item.ten}}</a>
+        </div>
+        <div class="contentmiddle3" *ngFor="let item1 of item.bai_viet">
+            <a [routerLink]="[item1.url]" routerLinkActive="router-link-active" >
+                <strong>{{item1.tieu_de}} </strong>
+            </a>
+            <p>{{item1.mo_ta}}</p>
+        </div>
+    </div>
+</div>

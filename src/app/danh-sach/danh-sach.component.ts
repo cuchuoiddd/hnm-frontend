@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GdkHttpClientService } from '@gdkmd/httpxhd';
-import { async } from '@angular/core/testing';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-danh-sach',
@@ -29,8 +29,8 @@ export class DanhSachComponent implements OnInit, OnDestroy {
     action_download: boolean = false;
     action_chi_tiet: boolean = false;
 
-    constructor(private route: ActivatedRoute, private router: Router, private gdkClient: GdkHttpClientService) {
-        this.param = this.route.snapshot.params.id;
+    constructor(private route: ActivatedRoute, private router: Router, private gdkClient: GdkHttpClientService, private sanitizer: DomSanitizer) {
+        // this.param = this.route.snapshot.params.id;
         // if(this.param != '123'){
         //     this.router.navigate([''])
         // }
@@ -42,6 +42,8 @@ export class DanhSachComponent implements OnInit, OnDestroy {
             this.resetData();
             this.param = params['params'].id;
             this.dsBaiViet();
+            console.log(8888888,this.param);
+            
         })
     }
     dsBaiViet() {
@@ -61,29 +63,32 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                 parms: [this.param, (this.pageNumber - 1) * this.pageSize, this.pageSize]
             }
         }).subscribe(s => {
-            console.log(123131, s);
+            console.log(56456464,s.data);
+            console.log(123,this.param,this.pageNumber,this.pageSize);
+            
             if (s.ok && s.data.length > 0) {
-                this.ten_chuyen_muc = s.data[0].ten;
+                this.ten_chuyen_muc = s.data[0].tieu_de;
                 const phan_loai = s.data[0].phan_loai;
                 switch (phan_loai) {
-                    case "bai_viet":
+                    case 'bai_viet':
                         this.action_bai_viet = true;
                         setTimeout(() => {
+                            this.bai_viet.ten_chuyen_muc = s.data[0].tieu_de;
                             this.bai_viet.data = s.data;
                             this.bai_viet.total = this.total;
                         });
                         break;
-                    case "hinh_anh":
+                    case 'hinh_anh':
                         this.action_hinh_anh = true;
                         setTimeout(() => {
                             this.hinh_anh.data = s.data;
                             this.hinh_anh.total = this.total;
                         });
                         break;
-                    case "video":
+                    case 'video':
                         this.action_video = true;
                         setTimeout(() => {
-                            this.video.data = s.data;
+                            this.video.data = s.data.map(m => { m['video'] = this.sanitizer.bypassSecurityTrustResourceUrl(m.bai_viet.video); return m} )
                             this.video.total = this.total;
                             this.video.tin_moi = s.data[0];
                         });
@@ -91,31 +96,32 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                     case "audio":
                         this.action_audio = true;
                         setTimeout(() => {
-                            this.audio.data = s.data;
+                            this.audio.data = s.data.map(m => { m['audio'] = this.sanitizer.bypassSecurityTrustResourceUrl(m.bai_viet.video); return m} )
                             this.audio.total = this.total;
                         });
                         break;
-                    case "link_tai":
+                    case 'link_tai':
                         this.action_download = true;
                         setTimeout(() => {
                             this.download.data = s.data;
                             this.download.total = this.total;
-                            this.download.tin_moi = s.data[0];
-
+                            this.download.tin_moi = s.data;
                         });
                         break;
-                    case "gioi_thieu":
+                    case 'gioi_thieu':
+                        console.log(56456464,s.data);
+                        
                         this.action_chi_tiet = true;
                         setTimeout(() => {
-                            this.chi_tiet.tin_moi = s.data[0];
+                            this.chi_tiet.tin_moi = s.data;
                         });
                         break;
                     default:
-                        this.router.navigate([''])
+                        this.router.navigate(['']);
                         break;
                 }
             } else { this.data = []; }
-        })
+        });
     }
     resetData() {
         this.action_bai_viet = false;
@@ -125,7 +131,10 @@ export class DanhSachComponent implements OnInit, OnDestroy {
         this.action_download = false;
         this.action_chi_tiet = false;
     }
-    ngOnDestroy(){
+    ngOnDestroy() {
 
+    }
+    PageChange(){
+        this.dsBaiViet();
     }
 }
