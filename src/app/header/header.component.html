@@ -23,7 +23,7 @@
                 <!-- <li *ngFor="let item of data_menu" ><a href="" title="Trang chính"></a>{{item.ten}}</li> -->
                 <!-- <li><a [routerLink]="['']" routerLinkActive="router-link-active"  title="Trang chính">Trang chính</a> -->
 
-                <li class="item-with-ul" *ngFor="let item of data_menu"><a [routerLink]="[item.url]" routerLinkActive="router-link-active"  title="Giới Thiệu">{{item.ten}} <i class="caret" *ngIf="item.children && item.children.length > 0"></i></a>
+                <li class="item-with-ul" *ngFor="let item of data_menu"><a [routerLink]="[item.url]" title="Giới Thiệu">{{item.ten}} <i class="caret" *ngIf="item.children && item.children.length > 0"></i></a>
                     <ul *ngIf="item.children && item.children.length > 0">
                         <li *ngFor="let item1 of item.children"><a [routerLink]="[item1.url]" routerLinkActive="router-link-active"  title="Lịch sử hình thành">{{item1.ten}}</a>
                         </li>

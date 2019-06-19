@@ -1,0 +1,16 @@
+<div class="boxblog group" *ngFor="let item of data">
+    <ul class="title1">
+        <li>
+            <h2>{{item.ds_menu_con.ten}}</h2>
+        </li>
+    </ul>
+    <div class="news f-left"><a [routerLink]="[item.bai_viet_moi[0].url]" ><b>{{item.bai_viet_moi[0].tieu_de}}</b></a>
+        <p>{{item.bai_viet_moi[0].mo_ta}}</p>
+    </div>
+    <ul class="dongtin">
+        <li *ngFor="let item1 of item.bai_viet">
+            <a *ngIf="item1.id != item.bai_viet_moi[0].id" routerLink="/{{item.ds_menu_con.url}}/{{item1.url}}" >{{item1.tieu_de}}</a>
+        </li>
+    </ul>
+    <p align="right"><b><a [routerLink]="[item.ds_menu_con.url]" >Xem tiếp</a></b></p>
+</div>

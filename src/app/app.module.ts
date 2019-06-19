@@ -22,6 +22,7 @@ import { DownloadComponent } from './danh-sach/download/download.component';
 import { HinhAnhComponent } from './danh-sach/hinh-anh/hinh-anh.component';
 import { ChiTietComponent } from './danh-sach/chi-tiet/chi-tiet.component';
 import { ChiTietBaiVietComponent } from './chi-tiet-bai-viet/chi-tiet-bai-viet.component';
+import { ChuyenMucComponent } from './danh-sach/chuyen-muc/chuyen-muc.component';
 
 const appConfig: GdkConfigUrl = {
     urlBaseServer: 'http://3114.gdk.com.vn:3116'
@@ -42,7 +43,8 @@ const appConfig: GdkConfigUrl = {
         AudioComponent,
         DownloadComponent,
         HinhAnhComponent,
-        ChiTietBaiVietComponent
+        ChiTietBaiVietComponent,
+        ChuyenMucComponent
     ],
     imports: [
 BrowserModule,

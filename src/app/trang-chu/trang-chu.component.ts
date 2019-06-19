@@ -12,11 +12,8 @@ export class TrangChuComponent implements OnInit {
     ds_tin_moi = [];
     url_mac_dinh = 'http://hoi-nguoi-mu.gdk.com.vn';
     tin_moi_nhat = [{
-        thuoc_chuyen_muc:{url :''},
-        url:'',
-        hinh_anh:'',
-        tieu_de:'',
-        mo_ta:''
+        bai_viet:{hinh_anh :'',tieu_de:'',mo_ta:'',url:''},
+        url:''
     }];
     min_height = 0;
     @ViewChild('heightScreen') heightScreen;
@@ -48,16 +45,15 @@ export class TrangChuComponent implements OnInit {
                 reqid: '16b44583d45'
             }
         }).subscribe(s => {
+            console.log(312231,s);
+            
             if (s.ok && s.data.length > 0) {
                 this.ds_tin_moi = s.data;
                 this.tin_moi_nhat = s.data;
             } else { this.ds_tin_moi = []; 
                     this.tin_moi_nhat = [{
-                        thuoc_chuyen_muc:{url :''},
-                        url:'',
-                        hinh_anh:'',
-                        tieu_de:'',
-                        mo_ta:''
+                        bai_viet:{hinh_anh :'',tieu_de:'',mo_ta:'',url:''},
+                        url:''
                 }]
         }
         })
