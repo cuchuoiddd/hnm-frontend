@@ -12,14 +12,14 @@ export class ChiTietBaiVietComponent implements OnInit {
     param_id = '';
     param_chuyen_muc = '';
     data = [];
-    constructor(private route: ActivatedRoute, private router: Router, private gdkClient: GdkHttpClientService) {
-        // this.param = this.route.snapshot.params.id;
-        this.param_id = this.route.snapshot.params.id;
-        this.param_chuyen_muc = this.route.snapshot.params.chuyen_muc;
-    }
+    constructor(private route: ActivatedRoute, private router: Router, private gdkClient: GdkHttpClientService) {}
 
     ngOnInit() {
-        this.chiTietBaiViet();
+        this.route.paramMap.subscribe(params => {
+            this.param_id = params['params'].id;
+            this.param_chuyen_muc = params['params'].chuyen_muc;
+            this.chiTietBaiViet();
+        })
     }
     chiTietBaiViet() {
         this.gdkClient.queryPublicData({

@@ -16,6 +16,8 @@ export class MainMiddleComponent implements OnInit {
     ];
     chuyen_muc_khac = [];
     url_mac_dinh = 'http://hoi-nguoi-mu.gdk.com.vn';
+    data = [];
+    hinh_anh_active = 0;
     constructor(private gdkClient: GdkHttpClientService) { }
 
     ngOnInit() {
@@ -28,9 +30,14 @@ export class MainMiddleComponent implements OnInit {
                 reqid: '16b54162b1e'
             }
         }).subscribe(s => {
-            if (s.ok && s.data.length > 0) { this.thu_vien_hinh_anh = s.data }
+            if (s.ok && s.data.length > 0) { 
+                this.data = s.data; 
+                this.thu_vien_hinh_anh = [];
+                this.thu_vien_hinh_anh.push(s.data[0]);
+            }
             else {
-                this.thu_vien_hinh_anh = [{ ten: 'THƯ VIỆN HÌNH ẢNH', bai_viet: { tieu_de: "Tiêu đề", hinh_anh: "mac_dinh" }, url: 'mac_dinh' }]
+                this.data = [];
+                this.thu_vien_hinh_anh = [{ ten: 'THƯ VIỆN HÌNH ẢNH', bai_viet: { tieu_de: "Tiêu đề", hinh_anh: "mac_dinh" }, url: 'mac_dinh' }];
             }
         })
     }
@@ -42,6 +49,28 @@ export class MainMiddleComponent implements OnInit {
         }).subscribe(s => {
             if (s.ok && s.data.length > 0) { this.chuyen_muc_khac = s.data } else { this.chuyen_muc_khac = [] }
         })
+    }
+    getHinhAnhActive(position){
+        this.thu_vien_hinh_anh = [];
+        this.thu_vien_hinh_anh.push(this.data[position]);
+    }
+    prev(){
+        if(this.hinh_anh_active == 0){
+            this.hinh_anh_active = this.data.length-1;
+        } else {
+            this.hinh_anh_active -- ;
+        }
+        this.getHinhAnhActive(this.hinh_anh_active);
+        
+    }
+    next(){
+        if(this.hinh_anh_active == this.data.length-1){
+            this.hinh_anh_active = 0;
+        } else {
+            this.hinh_anh_active ++ ;
+        }
+        this.getHinhAnhActive(this.hinh_anh_active);
+
     }
 
 }

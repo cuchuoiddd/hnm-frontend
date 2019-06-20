@@ -12,5 +12,5 @@
             <a *ngIf="item1.id != item.bai_viet_moi[0].id" routerLink="/{{item.ds_menu_con.url}}/{{item1.url}}" >{{item1.tieu_de}}</a>
         </li>
     </ul>
-    <p align="right"><b><a [routerLink]="[item.ds_menu_con.url]" >Xem tiếp</a></b></p>
+    <p align="right"><b><a [routerLink]="['/'+item.ds_menu_con.url]" >Xem tiếp</a></b></p>
 </div>

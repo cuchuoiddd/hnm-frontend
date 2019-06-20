@@ -45,8 +45,6 @@ export class TrangChuComponent implements OnInit {
                 reqid: '16b44583d45'
             }
         }).subscribe(s => {
-            console.log(312231,s);
-            
             if (s.ok && s.data.length > 0) {
                 this.ds_tin_moi = s.data;
                 this.tin_moi_nhat = s.data;

@@ -1,16 +1,16 @@
 <div class="boxblog group">
     <ul class="title1">
         <li>
-                <h2>{{tin_moi[0].ten}}</h2>
+                <h2>{{data[0].ten}}</h2>
         </li>
     </ul>
     <div class="blog group" *ngFor="let item of data">
         <div class="block-right col-md-12 col-sm-12 col-xs-12">
             <h3>
-                <a [routerLink]="[item.bai_viet.url]">{{item.bai_viet.tieu_de}}</a>
+                <a [routerLink]="[item.url +'/'+ item.bai_viet.url]">{{item.bai_viet.tieu_de}}</a>
             </h3>
         </div>
-        <p class="readmore"><a [routerLink]="[item.bai_viet.url]" download>Tải về</a></p>
+        <p class="readmore"><a target="_blank" [routerLink]="[item.bai_viet.link_download]" download>Tải về</a></p>
     </div>
 
 </div>

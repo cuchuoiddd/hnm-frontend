@@ -28,5 +28,8 @@ export class ContentRightComponent implements OnInit {
             } else { this.ds_video = []; this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/yaT3_WFkvI4')}
         })
     }
+    clickVideo(item){
+        this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(item.bai_viet.video);
+    }
 
 }

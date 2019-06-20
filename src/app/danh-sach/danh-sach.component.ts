@@ -16,13 +16,20 @@ export class DanhSachComponent implements OnInit, OnDestroy {
     data = [];
     url_mac_dinh = 'http://hoi-nguoi-mu.gdk.com.vn';
     ten_chuyen_muc = '';
-    @ViewChild('bai_viet') bai_viet;
-    @ViewChild('hinh_anh') hinh_anh;
-    @ViewChild('video') video;
-    @ViewChild('audio') audio;
-    @ViewChild('download') download;
-    @ViewChild('chi_tiet') chi_tiet;
-    @ViewChild('chuyen_muc') chuyen_muc;
+    data_download = [];
+    data_bai_viet = [];
+    data_hinh_anh = [];
+    data_video = [];
+    data_audio = [];
+    data_chi_tiet = [];
+    data_chuyen_muc = [];
+    // @ViewChild('bai_viet') bai_viet;
+    // @ViewChild('hinh_anh') hinh_anh;
+    // @ViewChild('video') video;
+    // @ViewChild('audio') audio;
+    // @ViewChild('download') vdownload;
+    // @ViewChild('chi_tiet') chi_tiet;
+    // @ViewChild('chuyen_muc') chuyen_muc;
     action_bai_viet: boolean = false;
     action_hinh_anh: boolean = false;
     action_video: boolean = false;
@@ -32,14 +39,9 @@ export class DanhSachComponent implements OnInit, OnDestroy {
     action_chuyen_muc: boolean = false;
 
     constructor(private route: ActivatedRoute, private router: Router, private gdkClient: GdkHttpClientService, private sanitizer: DomSanitizer) {
-        // this.param = this.route.snapshot.params.id;
-        // if(this.param != '123'){
-        //     this.router.navigate([''])
-        // }
+        this.param = this.route.snapshot.params.id;
     }
     ngOnInit() {
-        // this.dsBaiViet();
-        // this.param = this.route.snapshot.paramMap.get('id');
         this.route.paramMap.subscribe(params => {
             this.resetData();
             this.param = params['params'].id;
@@ -63,8 +65,6 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                 parms: [this.param]
             }
         }).subscribe(s => {
-            console.log(321123,s);
-
             if (s.ok && s.data.length > 0) {
                 if (s.data[0].phan_loai == 'mac_dinh') {
                     this.gdkClient.queryPublicData({
@@ -73,12 +73,10 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                             parms: [this.param]
                         }
                     }).subscribe(s => {
-                        console.log(321123);
-                        
                         if (s.ok && s.data.length > 0) {
                             this.action_chuyen_muc = true;
                             setTimeout(() => {
-                                this.chuyen_muc.data = s.data;
+                                this.data_chuyen_muc = s.data;
                             });
                         }
                     })
@@ -96,45 +94,45 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                                 case 'bai_viet':
                                     this.action_bai_viet = true;
                                     setTimeout(() => {
-                                        this.bai_viet.ten_chuyen_muc = s.data[0].ten;
-                                        this.bai_viet.data = s.data;
-                                        this.bai_viet.total = this.total;
+                                        this.data_bai_viet = s.data;
                                     });
                                     break;
                                 case 'hinh_anh':
                                     this.action_hinh_anh = true;
                                     setTimeout(() => {
-                                        this.hinh_anh.data = s.data;
-                                        this.hinh_anh.total = this.total;
+                                        this.data_hinh_anh = s.data;
                                     });
                                     break;
                                 case 'video':
                                     this.action_video = true;
                                     setTimeout(() => {
-                                        this.video.data = s.data.map(m => { m['video'] = this.sanitizer.bypassSecurityTrustResourceUrl(m.bai_viet.video); return m })
-                                        this.video.total = this.total;
-                                        this.video.tin_moi = s.data[0];
+                                        // this.video.data = s.data.map(m => { m['video'] = this.sanitizer.bypassSecurityTrustResourceUrl(m.bai_viet.video); return m })
+                                        this.data_video = s.data;
+                                        // this.video.tin_moi = s.data[0];
                                     });
                                     break;
                                 case "audio":
                                     this.action_audio = true;
                                     setTimeout(() => {
-                                        this.audio.data = s.data.map(m => { m['audio'] = this.sanitizer.bypassSecurityTrustResourceUrl(m.bai_viet.video); return m })
-                                        this.audio.total = this.total;
+                                        // this.audio.data = s.data.map(m => { m['audio'] = this.sanitizer.bypassSecurityTrustResourceUrl(m.bai_viet.video); return m })
+                                        // this.audio.total = this.total;
+                                        this.action_audio = s.data;
                                     });
                                     break;
                                 case 'link_tai':
-                                    this.action_download = true;
+                                    console.log(21313131,s.data);
+                                    
                                     setTimeout(() => {
-                                        this.download.data = s.data;
-                                        this.download.total = this.total;
-                                        this.download.tin_moi = s.data;
+                                        this.action_download = true;
+                                        this.data_download = s.data || [];
+                                        // this.vdownload.total = this.total;
                                     });
                                     break;
                                 case 'gioi_thieu':
                                     this.action_chi_tiet = true;
                                     setTimeout(() => {
-                                        this.chi_tiet.tin_moi = s.data;
+                                        // this.chi_tiet.tin_moi = s.data;
+                                        this.data_chi_tiet = s.data;
                                     });
                                     break;
                                 default:
