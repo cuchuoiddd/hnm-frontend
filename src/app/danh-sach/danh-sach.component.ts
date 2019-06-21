@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GdkHttpClientService } from '@gdkmd/httpxhd';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-danh-sach',
@@ -13,9 +12,6 @@ export class DanhSachComponent implements OnInit, OnDestroy {
     pageNumber: number = 1;
     pageSize: number = 20;
     param = '';
-    data = [];
-    url_mac_dinh = 'http://hoi-nguoi-mu.gdk.com.vn';
-    ten_chuyen_muc = '';
     data_download = [];
     data_bai_viet = [];
     data_hinh_anh = [];
@@ -23,13 +19,6 @@ export class DanhSachComponent implements OnInit, OnDestroy {
     data_audio = [];
     data_chi_tiet = [];
     data_chuyen_muc = [];
-    // @ViewChild('bai_viet') bai_viet;
-    // @ViewChild('hinh_anh') hinh_anh;
-    // @ViewChild('video') video;
-    // @ViewChild('audio') audio;
-    // @ViewChild('download') vdownload;
-    // @ViewChild('chi_tiet') chi_tiet;
-    // @ViewChild('chuyen_muc') chuyen_muc;
     action_bai_viet: boolean = false;
     action_hinh_anh: boolean = false;
     action_video: boolean = false;
@@ -38,7 +27,7 @@ export class DanhSachComponent implements OnInit, OnDestroy {
     action_chi_tiet: boolean = false;
     action_chuyen_muc: boolean = false;
 
-    constructor(private route: ActivatedRoute, private router: Router, private gdkClient: GdkHttpClientService, private sanitizer: DomSanitizer) {
+    constructor(private route: ActivatedRoute, private router: Router, private gdkClient: GdkHttpClientService) {
         this.param = this.route.snapshot.params.id;
     }
     ngOnInit() {
@@ -57,6 +46,7 @@ export class DanhSachComponent implements OnInit, OnDestroy {
         }).subscribe(s => {
             if (s.ok && s.data.length > 0) {
                 this.total = s.data.length;
+
             } else { this.total = 0 }
         })
         this.gdkClient.queryPublicData({
@@ -88,58 +78,37 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                         }
                     }).subscribe(s => {
                         if (s.ok && s.data.length > 0) {
-                            this.ten_chuyen_muc = s.data[0].tieu_de;
                             const phan_loai = s.data[0].phan_loai;
                             switch (phan_loai) {
                                 case 'bai_viet':
                                     this.action_bai_viet = true;
-                                    setTimeout(() => {
-                                        this.data_bai_viet = s.data;
-                                    });
+                                    this.data_bai_viet = s.data;
                                     break;
                                 case 'hinh_anh':
                                     this.action_hinh_anh = true;
-                                    setTimeout(() => {
-                                        this.data_hinh_anh = s.data;
-                                    });
+                                    this.data_hinh_anh = s.data;
                                     break;
                                 case 'video':
                                     this.action_video = true;
-                                    setTimeout(() => {
-                                        // this.video.data = s.data.map(m => { m['video'] = this.sanitizer.bypassSecurityTrustResourceUrl(m.bai_viet.video); return m })
-                                        this.data_video = s.data;
-                                        // this.video.tin_moi = s.data[0];
-                                    });
+                                    this.data_video = s.data;
                                     break;
                                 case "audio":
                                     this.action_audio = true;
-                                    setTimeout(() => {
-                                        // this.audio.data = s.data.map(m => { m['audio'] = this.sanitizer.bypassSecurityTrustResourceUrl(m.bai_viet.video); return m })
-                                        // this.audio.total = this.total;
-                                        this.action_audio = s.data;
-                                    });
+                                    this.action_audio = s.data;
                                     break;
                                 case 'link_tai':
-                                    console.log(21313131,s.data);
-                                    
-                                    setTimeout(() => {
-                                        this.action_download = true;
-                                        this.data_download = s.data || [];
-                                        // this.vdownload.total = this.total;
-                                    });
+                                    this.action_download = true;
+                                    this.data_download = s.data || [];
                                     break;
                                 case 'gioi_thieu':
                                     this.action_chi_tiet = true;
-                                    setTimeout(() => {
-                                        // this.chi_tiet.tin_moi = s.data;
-                                        this.data_chi_tiet = s.data;
-                                    });
+                                    this.data_chi_tiet = s.data;
                                     break;
                                 default:
                                     this.router.navigate(['']);
                                     break;
                             }
-                        } else { this.data = []; }
+                        } else { }
                     });
                 }
             }
@@ -157,7 +126,8 @@ export class DanhSachComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
 
     }
-    PageChange() {
+    onPageChange(event) {
+        this.pageNumber = event.pageNumber;
         this.dsBaiViet();
     }
 }

@@ -12,5 +12,6 @@
         </div>
         <p class="readmore"><a target="_blank" [routerLink]="[item.bai_viet.link_download]" download>Tải về</a></p>
     </div>
-
+    <eui-pagination [total]="total" [pageSize]="pageSize" [pageNumber]="pageNumber"
+    (pageChange)="onPageChange($event)"></eui-pagination>
 </div>

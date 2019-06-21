@@ -1,9 +1,11 @@
-<div class="boxblog">
-<app-bai-viet #bai_viet *ngIf="action_bai_viet" (PageChange)="PageChange"></app-bai-viet>
-<app-audio #audio *ngIf="action_audio"></app-audio>
-<app-video #video *ngIf="action_video"></app-video>
-<app-hinh-anh #hinh_anh *ngIf="action_hinh_anh"></app-hinh-anh>
-<app-download [download]="data_download" *ngIf="action_download"></app-download>
-<app-chi-tiet #chi_tiet *ngIf="action_chi_tiet"></app-chi-tiet>
-<app-chuyen-muc #chuyen_muc *ngIf="action_chuyen_muc"></app-chuyen-muc>
-</div>
+<app-chi-tiet class="boxblog">
+    <app-bai-viet [bai_viet]="data_bai_viet" [total]="total" *ngIf="action_bai_viet"
+        (PageChange)="onPageChange($event)"></app-bai-viet>
+    <app-audio [audio]="data_audio" *ngIf="action_audio"></app-audio>
+    <app-video [video]="data_video" *ngIf="action_video"></app-video>
+    <app-hinh-anh [hinh_anh]="data_hinh_anh" *ngIf="action_hinh_anh"></app-hinh-anh>
+    <app-download [download]="data_download" [total]="total" (PageChange)="onPageChange($event)"
+        *ngIf="action_download"></app-download>
+    <app-chi-tiet [chi_tiet]="data_chi_tiet" *ngIf="action_chi_tiet"></app-chi-tiet>
+    <app-chuyen-muc [chuyen_muc]="data_chuyen_muc" *ngIf="action_chuyen_muc"></app-chuyen-muc>
+</app-chi-tiet>
