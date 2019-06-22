@@ -1,11 +1,11 @@
-<div class="boxblog group" *ngFor="let item of data">
+<div class="boxblog group">
     <ul class="title1">
         <li>
-            <h2>{{item.ten}}</h2>
+            <h2>{{tieu_de}}</h2>
         </li>
     </ul>
     <div class="content_detail">
-        <div class="box-info f-left" [innerHTML]="item.bai_viet.noi_dung">
+        <div class="box-info f-left" [innerHTML]="noi_dung">
             <!-- {{tin_moi && tin_moi.bai_viet ? tin_moi.bai_viet.noi_dung : ""}} -->
         </div>
     </div>

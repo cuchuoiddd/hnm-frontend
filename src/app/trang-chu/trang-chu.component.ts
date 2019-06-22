@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GdkHttpClientService } from '@gdkmd/httpxhd';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-trang-chu',
@@ -12,21 +13,22 @@ export class TrangChuComponent implements OnInit {
     ds_tin_moi = [];
     url_mac_dinh = 'http://hoi-nguoi-mu.gdk.com.vn';
     tin_moi_nhat = [{
-        bai_viet:{hinh_anh :'',tieu_de:'',mo_ta:'',url:''},
-        url:''
+        bai_viet: { hinh_anh: '', tieu_de: '', mo_ta: '', url: '' },
+        url: ''
     }];
     min_height = 0;
     @ViewChild('heightScreen') heightScreen;
 
-    constructor(private gdkClient: GdkHttpClientService) { }
+    constructor(private gdkClient: GdkHttpClientService,private meta: Meta, private titleService: Title) { }
 
     ngOnInit() {
         this.dsChuyenMuc();
         this.dsTinMoiNhat();
         setTimeout(() => {
             this.min_height = this.heightScreen.nativeElement.offsetHeight;
-        },1000);
-        
+        }, 1000);
+        this.titleService.setTitle('Hội người mù Việt Nam');
+        this.meta.updateTag({ name: "description", content: 'Hội người mù Việt Nam' });
     }
     dsChuyenMuc() {
         this.gdkClient.queryPublicData({
@@ -48,12 +50,13 @@ export class TrangChuComponent implements OnInit {
             if (s.ok && s.data.length > 0) {
                 this.ds_tin_moi = s.data;
                 this.tin_moi_nhat = s.data;
-            } else { this.ds_tin_moi = []; 
-                    this.tin_moi_nhat = [{
-                        bai_viet:{hinh_anh :'',tieu_de:'',mo_ta:'',url:''},
-                        url:''
+            } else {
+            this.ds_tin_moi = [];
+                this.tin_moi_nhat = [{
+                    bai_viet: { hinh_anh: '', tieu_de: '', mo_ta: '', url: '' },
+                    url: ''
                 }]
-        }
+            }
         })
     }
 }

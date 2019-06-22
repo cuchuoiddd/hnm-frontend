@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GdkHttpClientService } from '@gdkmd/httpxhd';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-danh-sach',
@@ -27,7 +28,7 @@ export class DanhSachComponent implements OnInit, OnDestroy {
     action_chi_tiet: boolean = false;
     action_chuyen_muc: boolean = false;
 
-    constructor(private route: ActivatedRoute, private router: Router, private gdkClient: GdkHttpClientService) {
+    constructor(private route: ActivatedRoute, private router: Router, private gdkClient: GdkHttpClientService, private meta: Meta, private titleService: Title) {
         this.param = this.route.snapshot.params.id;
     }
     ngOnInit() {
@@ -65,9 +66,11 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                     }).subscribe(s => {
                         if (s.ok && s.data.length > 0) {
                             this.action_chuyen_muc = true;
-                            setTimeout(() => {
-                                this.data_chuyen_muc = s.data;
-                            });
+                            this.data_chuyen_muc = s.data;
+                            const title = s.data[0].ten || '';
+                            const mo_ta = s.data[0].mo_ta || '';
+                            this.titleService.setTitle(title);
+                            this.meta.updateTag({ name: "description", content: mo_ta });
                         }
                     })
                 } else {
@@ -83,6 +86,10 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                                 case 'bai_viet':
                                     this.action_bai_viet = true;
                                     this.data_bai_viet = s.data;
+                                    const title_bai_viet = s.data[0].ten || '';
+                                    const mo_ta_bai_viet = s.data[0].mo_ta || '';
+                                    this.titleService.setTitle(title_bai_viet);
+                                    this.meta.updateTag({ name: "description", content: mo_ta_bai_viet });
                                     break;
                                 case 'hinh_anh':
                                     this.action_hinh_anh = true;
@@ -97,12 +104,28 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                                     this.action_audio = s.data;
                                     break;
                                 case 'link_tai':
+                                    const title_link_tai = s.data[0].ten|| '';
+                                    const mo_ta_link_tai = s.data[0].mo_ta || '';
+                                    this.titleService.setTitle(title_link_tai);
+                                    this.meta.updateTag({ name: "description", content: mo_ta_link_tai });
                                     this.action_download = true;
                                     this.data_download = s.data || [];
                                     break;
                                 case 'gioi_thieu':
+                                    const title = s.data[0].bai_viet.tieu_de || '';
+                                    const mo_ta = s.data[0].bai_viet.mo_ta || '';
+                                    this.titleService.setTitle(title);
+                                    this.meta.updateTag({ name: "description", content: mo_ta });
                                     this.action_chi_tiet = true;
                                     this.data_chi_tiet = s.data;
+                                    break;
+                                case 'khac':
+                                    this.action_bai_viet = true;
+                                    this.data_bai_viet = s.data;
+                                    const title_khac = s.data[0].ten || '';
+                                    const mo_ta_khac = s.data[0].mo_ta || '';
+                                    this.titleService.setTitle(title_khac);
+                                    this.meta.updateTag({ name: "description", content: mo_ta_khac });
                                     break;
                                 default:
                                     this.router.navigate(['']);

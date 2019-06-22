@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GdkHttpClientService } from '@gdkmd/httpxhd';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-chi-tiet-bai-viet',
@@ -12,7 +13,7 @@ export class ChiTietBaiVietComponent implements OnInit {
     param_id = '';
     param_chuyen_muc = '';
     data = [];
-    constructor(private route: ActivatedRoute, private router: Router, private gdkClient: GdkHttpClientService) {}
+    constructor(private route: ActivatedRoute, private gdkClient: GdkHttpClientService,private meta: Meta , private titleService: Title) {}
 
     ngOnInit() {
         this.route.paramMap.subscribe(params => {
@@ -29,6 +30,10 @@ export class ChiTietBaiVietComponent implements OnInit {
             }
         }).subscribe(s => {
             if (s.ok && s.data.length > 0) {
+                const title = s.data[0].tieu_de || '';
+                const mo_ta = s.data[0].mo_ta || '';
+                this.titleService.setTitle(title);
+                this.meta.updateTag({ name: "description", content: mo_ta });
                 this.data = s.data;
             } else this.data = [];
         })

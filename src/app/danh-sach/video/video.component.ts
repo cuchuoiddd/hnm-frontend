@@ -19,6 +19,6 @@ export class VideoComponent implements OnInit,OnChanges {
     ngOnChanges(changes: SimpleChanges): void {
         //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
         //Add '${implements OnChanges}' to the class.
-        this.data = this.video.map(m => { m['video'] = this.sanitizer.bypassSecurityTrustResourceUrl(m.bai_viet.video); return m })
+        this.data = this.video.map(m => { m['video'] = this.sanitizer.bypassSecurityTrustResourceUrl(m.bai_viet.url); return m });
     }
 }
