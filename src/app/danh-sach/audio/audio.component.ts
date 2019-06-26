@@ -16,6 +16,8 @@ export class AudioComponent implements OnInit,OnChanges {
     constructor(private sanitizer: DomSanitizer) { }
 
     ngOnInit() {
+        console.log('audio day nay');
+        
     }
     ngOnChanges(changes: SimpleChanges): void {
         //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.

@@ -1,8 +1,11 @@
-<div #heightScreen id="boxleft" class="row">
+<div #heightScreen id="boxleft" class="row tin-moi">
     <div class="block-left col-md-6 col-sm-6 col-xs-12">
-        <a href="#"><img src="{{url_mac_dinh}}/{{tin_moi_nhat[0].bai_viet.hinh_anh ? tin_moi_nhat[0].bai_viet.hinh_anh : ''}}" alt="{{tin_moi_nhat ? tin_moi_nhat[0].bai_viet.tieu_de : ''}}" /></a>
+        <a href="#"><img
+                src="{{url_mac_dinh}}/{{tin_moi_nhat[0].bai_viet.hinh_anh ? tin_moi_nhat[0].bai_viet.hinh_anh : ''}}"
+                alt="{{tin_moi_nhat ? tin_moi_nhat[0].bai_viet.tieu_de : ''}}" /></a>
         <div class="ndtinnoibat">
-            <a class="title" [routerLink]="[tin_moi_nhat[0].url ? (tin_moi_nhat[0].url + '/' + tin_moi_nhat[0].bai_viet.url) : '']"
+            <a class="title"
+                [routerLink]="[tin_moi_nhat[0].url ? (tin_moi_nhat[0].url + '/' + tin_moi_nhat[0].bai_viet.url) : '']"
                 routerLinkActive="router-link-active"><b>{{tin_moi_nhat ? tin_moi_nhat[0].bai_viet.tieu_de : ""}}</b></a>
             <p align="justify">{{tin_moi_nhat ? tin_moi_nhat[0].bai_viet.mo_ta : ""}}</p>
         </div>
@@ -10,11 +13,12 @@
 
     <div class="block-right col-md-6 col-sm-6 col-xs-12">
         <div class="tinmoi">
-            <h2 class="titletinmoi group"><a>Tin mới nhất</a></h2>
+            <!-- <h2 class="titletinmoi group"><a>Tin mới nhất</a></h2> -->
             <ul class="dongtin">
                 <li *ngFor="let item of ds_tin_moi, let i = index">
-                    <a [routerLink]="[item.url + '/' + item.bai_viet.url]" routerLinkActive="router-link-active"><b>{{item.bai_viet.tieu_de}}</b></a>
-                    <p *ngIf="i==0">{{item.bai_viet.mo_ta}}</p>
+                    <a *ngIf="i!=0" [routerLink]="[item.url + '/' + item.bai_viet.url]"
+                        routerLinkActive="router-link-active"><b>{{item.bai_viet.tieu_de}}</b></a>
+                    <p *ngIf="i!=0 && i==1">{{item.bai_viet.mo_ta}}</p>
                 </li>
             </ul>
         </div>
@@ -28,26 +32,31 @@
                 <h2>{{item.ten}}</h2>
             </li>
         </ul>
-
-        <div class="blog group">
-            <div class="block-left col-md-6 col-sm-6 col-xs-12">
-                <div>
-                    <a [routerLink]="[item.url+'/'+item.bai_viet[0].url]" routerLinkActive="router-link-active"><img
-                            src="{{url_mac_dinh}}/{{item.bai_viet[0].hinh_anh}}" alt="{{item.bai_viet[0].tieu_de}}" /></a>
+        <div *ngIf="item.children">
+            <div class="blog group" *ngFor="let item1 of item.children">
+                <div class="block-left col-md-2 col-sm-2 col-xs-12" *ngIf="item1.bai_viet.length > 0">
+                    <div>
+                        <a [routerLink]="[item1.url+'/'+item1.bai_viet[0].url]"
+                            routerLinkActive="router-link-active"><img
+                                src="{{url_mac_dinh}}/{{item1.bai_viet[0].hinh_anh}}"
+                                alt="{{item1.bai_viet[0].tieu_de}}" style="width: 126px" />
+                        </a>
+                    </div>
                 </div>
-                <div>
-                    <a [routerLink]="[item.url+'/'+item.bai_viet[0].url]" routerLinkActive="router-link-active"><b>{{item.bai_viet
-                            ? item.bai_viet[0].tieu_de : ""}}</b></a>
-                    <p>{{item.bai_viet ? item.bai_viet[0].mo_ta : ""}}</p>
-                </div>
-            </div>
 
-            <div class="block-right col-md-6 col-sm-6 col-xs-12">
-                <div class="tinmoi">
-                    <ul class="dongtin">
-                        <li *ngFor="let item1 of item.bai_viet"><a [routerLink]="item.url +'/'+ item1.url"
-                                routerLinkActive="router-link-active">{{item1.tieu_de}}</a></li>
-                    </ul>
+                <div class="block-right col-md-9 col-sm-9 col-xs-12" *ngIf="item1.bai_viet.length > 0">
+                    <div class="tinmoi">
+                        <ul class="dongtin">
+                            <li>
+                                <a class="tieu-de" [routerLink]="[item1.url+'/'+item1.bai_viet[0].url ]"
+                                    routerLinkActive="router-link-active">{{item1.bai_viet
+                                        ? item1.bai_viet[0].tieu_de : ""}}
+                                </a>
+                                <p class="text">{{item1.bai_viet ? item1.bai_viet[0].mo_ta : ""}}</p>
+                                <p class="pull-right xem-tiep"><a [routerLink]="[item1.url]" >Xem tiếp <strong>{{item1.ten}}</strong></a></p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

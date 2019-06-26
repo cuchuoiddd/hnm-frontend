@@ -56,6 +56,8 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                 parms: [this.param]
             }
         }).subscribe(s => {
+            console.log(898989989898989,s);
+            
             if (s.ok && s.data.length > 0) {
                 if (s.data[0].phan_loai == 'mac_dinh') {
                     this.gdkClient.queryPublicData({

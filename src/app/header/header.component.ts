@@ -9,7 +9,7 @@ import { GdkHttpClientService } from '@gdkmd/httpxhd';
 export class HeaderComponent implements OnInit {
     data_menu = [];
     data = [{
-        banner:''
+        banner: ''
     }];
     url_mac_dinh = 'http://hoi-nguoi-mu.gdk.com.vn';
     constructor(private gdkClient: GdkHttpClientService) { }
@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
     ngOnInit() {
         this.test();
     }
-    buildMenu(arrs: any[], cap: string = '1'): any[] {
+    buildMenu(arrs: any[], cap: string = 'mac-dinh'): any[] {
         let rs = [];
         let rs_con = [];
         for (const item of arrs) {

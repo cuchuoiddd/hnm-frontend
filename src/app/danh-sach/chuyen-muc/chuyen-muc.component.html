@@ -4,7 +4,7 @@
             <h2>{{item.ds_menu_con.ten}}</h2>
         </li>
     </ul>
-    <div class="news f-left"><a [routerLink]="[item.bai_viet_moi[0].url]" ><b>{{item.bai_viet_moi[0].tieu_de}}</b></a>
+    <div class="news f-left"><a routerLink="/{{item.ds_menu_con.url}}/{{item.bai_viet_moi[0].url}}" ><b>{{item.bai_viet_moi[0].tieu_de}}</b></a>
         <p>{{item.bai_viet_moi[0].mo_ta}}</p>
     </div>
     <ul class="dongtin">

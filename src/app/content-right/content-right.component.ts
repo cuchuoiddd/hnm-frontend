@@ -11,7 +11,7 @@ export class ContentRightComponent implements OnInit {
     ds_video = [];
     url_video = '';
     safeSrc: SafeResourceUrl;
-    constructor(private gdkClient: GdkHttpClientService,private sanitizer:DomSanitizer) { }
+    constructor(private gdkClient: GdkHttpClientService, private sanitizer: DomSanitizer) { }
 
     ngOnInit() {
         this.dsVideo();
@@ -26,12 +26,11 @@ export class ContentRightComponent implements OnInit {
                 this.ds_video = s.data;
                 this.url_video = s.data[0].url;
                 const video = s.data[0].bai_viet.url;
-                this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(video);
-            } else { this.ds_video = []; this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/yaT3_WFkvI4')}
+                this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(video);
+            } else { this.ds_video = []; this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/yaT3_WFkvI4') }
         })
     }
-    clickVideo(item){
-        this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(item.bai_viet.url);
+    clickVideo(item) {
+        this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(item.bai_viet.url);
     }
-
 }
