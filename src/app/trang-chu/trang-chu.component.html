@@ -1,7 +1,7 @@
 <div #heightScreen id="boxleft" class="row tin-moi">
     <div class="block-left col-md-6 col-sm-6 col-xs-12">
         <a href="#"><img
-                src="{{url_mac_dinh}}/{{tin_moi_nhat[0].bai_viet.hinh_anh ? tin_moi_nhat[0].bai_viet.hinh_anh : ''}}"
+                src="{{url_mac_dinh}}/{{tin_moi_nhat[0].bai_viet.hinh_anh ? tin_moi_nhat[0].bai_viet.hinh_anh[0]['hinh_anh'] : ''}}"
                 alt="{{tin_moi_nhat ? tin_moi_nhat[0].bai_viet.tieu_de : ''}}" /></a>
         <div class="ndtinnoibat">
             <a class="title"
@@ -35,10 +35,10 @@
         <div *ngIf="item.children">
             <div class="blog group" *ngFor="let item1 of item.children">
                 <div class="block-left col-md-2 col-sm-2 col-xs-12" *ngIf="item1.bai_viet.length > 0">
-                    <div>
+                    <div *ngIf="item1.bai_viet[0].hinh_anh">
                         <a [routerLink]="[item1.url+'/'+item1.bai_viet[0].url]"
                             routerLinkActive="router-link-active"><img
-                                src="{{url_mac_dinh}}/{{item1.bai_viet[0].hinh_anh}}"
+                                src="{{url_mac_dinh}}/{{item1.bai_viet[0].hinh_anh[0].hinh_anh}}"
                                 alt="{{item1.bai_viet[0].tieu_de}}" style="width: 126px" />
                         </a>
                     </div>
@@ -53,7 +53,35 @@
                                         ? item1.bai_viet[0].tieu_de : ""}}
                                 </a>
                                 <p class="text">{{item1.bai_viet ? item1.bai_viet[0].mo_ta : ""}}</p>
-                                <p class="pull-right xem-tiep"><a [routerLink]="[item1.url]" >Xem tiếp <strong>{{item1.ten}}</strong></a></p>
+                                <p class="pull-right xem-tiep"><a [routerLink]="[item1.url]">Xem tiếp
+                                        <strong>{{item1.ten}}</strong></a></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="item.bai_viet && item.bai_viet.length > 0">
+            <div class="blog group" *ngFor="let item1 of item.bai_viet">
+                <div class="block-left col-md-2 col-sm-2 col-xs-12">
+                    <div *ngIf="item1.hinh_anh">
+                        <a [routerLink]="[item.url+'/'+item1.url]" routerLinkActive="router-link-active"><img
+                                src="{{url_mac_dinh}}/{{item1.hinh_anh[0].hinh_anh}}" alt="{{item1.tieu_de}}"
+                                style="width: 126px" />
+                        </a>
+                    </div>
+                </div>
+
+                <div class="block-right col-md-9 col-sm-9 col-xs-12">
+                    <div class="tinmoi">
+                        <ul class="dongtin">
+                            <li>
+                                <a class="tieu-de" [routerLink]="[item.url+'/'+item1.url ]"
+                                    routerLinkActive="router-link-active">{{item1.tieu_de}}
+                                </a>
+                                <p class="text">{{item1.mo_ta}}</p>
+                                <p class="pull-right xem-tiep"><a [routerLink]="[item.url]">Xem tiếp
+                                        <strong>{{item1.ten}}</strong></a></p>
                             </li>
                         </ul>
                     </div>

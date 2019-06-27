@@ -6,7 +6,7 @@
         <ul class="title1"><li><a title="Bấm vào đây để xem thư viện ảnh" ><h2>{{thu_vien_hinh_anh[0].ten ? thu_vien_hinh_anh[0].ten : ""}}</h2></a></li></ul>
         <div class="carousel-inner">
             <a data-toggle="modal" data-target="#myModal">
-                <img src="{{url_mac_dinh}}/{{thu_vien_hinh_anh[0].bai_viet.hinh_anh}}" alt="{{thu_vien_hinh_anh[0].bai_viet.tieu_de ? thu_vien_hinh_anh[0].bai_viet.tieu_de : ''}}">
+                <img src="{{url_mac_dinh}}/{{thu_vien_hinh_anh[0].bai_viet.hinh_anh ? thu_vien_hinh_anh[0].bai_viet.hinh_anh[0]['hinh_anh'] : ''}}" alt="{{thu_vien_hinh_anh[0].bai_viet.tieu_de ? thu_vien_hinh_anh[0].bai_viet.tieu_de : ''}}">
             </a>
             <p>{{thu_vien_hinh_anh[0].bai_viet.tieu_de ? thu_vien_hinh_anh[0].bai_viet.tieu_de : ''}}</p>
         </div>
