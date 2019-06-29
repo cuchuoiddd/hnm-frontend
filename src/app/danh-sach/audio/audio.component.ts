@@ -16,10 +16,13 @@ export class AudioComponent implements OnInit,OnChanges {
     constructor(private sanitizer: DomSanitizer) { }
 
     ngOnInit() {
+        console.log(7897897789,this.data);
+        
     }
     ngOnChanges(changes: SimpleChanges): void {
         //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
         //Add '${implements OnChanges}' to the class.
-        this.data = this.audio.map(m => { m['audio'] = this.sanitizer.bypassSecurityTrustResourceUrl(m.bai_viet.url); return m });
+        // this.data = this.audio.map(m => { m['audio'] = this.sanitizer.bypassSecurityTrustResourceUrl(m.bai_viet.url); return m });
+        this.data = this.audio;
     }
 }

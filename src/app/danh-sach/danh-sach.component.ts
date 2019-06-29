@@ -82,6 +82,8 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                     }).subscribe(s => {
                         if (s.ok && s.data.length > 0) {
                             const phan_loai = s.data[0].phan_loai;
+                            console.log(123123,phan_loai, s.data);
+                            
                             switch (phan_loai) {
                                 case 'bai_viet':
                                     this.action_bai_viet = true;
@@ -101,7 +103,7 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                                     break;
                                 case "audio":
                                     this.action_audio = true;
-                                    this.action_audio = s.data;
+                                    this.data_audio = s.data;
                                     break;
                                 case 'link_tai':
                                     const title_link_tai = s.data[0].ten|| '';
