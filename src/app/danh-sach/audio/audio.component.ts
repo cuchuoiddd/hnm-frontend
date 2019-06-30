@@ -12,6 +12,7 @@ export class AudioComponent implements OnInit,OnChanges {
     pageNumber: number = 1;
     pageSize: number = 20;
     @Input('audio') audio;
+    @Input('type') type;
     url_mac_dinh = 'http://hoi-nguoi-mu.gdk.com.vn';
     constructor(private sanitizer: DomSanitizer) { }
 

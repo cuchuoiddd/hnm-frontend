@@ -55,9 +55,9 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                 reqid: '16b6e1a4569',
                 parms: [this.param]
             }
-        }).subscribe(s => {
-            if (s.ok && s.data.length > 0) {
-                if (s.data[0].phan_loai == 'mac_dinh') {
+        }).subscribe(sc => {
+            if (sc.ok && sc.data.length > 0) {
+                if (sc.data[0].phan_loai == 'mac_dinh') {
                     this.gdkClient.queryPublicData({
                         reqData: {
                             reqid: '16b6dbadb97',
@@ -82,8 +82,8 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                     }).subscribe(s => {
                         if (s.ok && s.data.length > 0) {
                             const phan_loai = s.data[0].phan_loai;
-                            console.log(123123,phan_loai, s.data);
-                            
+                            // this.type = s.data[0].phan_loai;
+                            // console.log(123123,this.type, s.data);
                             switch (phan_loai) {
                                 case 'bai_viet':
                                     this.action_bai_viet = true;

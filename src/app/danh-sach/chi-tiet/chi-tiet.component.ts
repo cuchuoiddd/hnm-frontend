@@ -13,6 +13,7 @@ export class ChiTietComponent implements OnInit, OnChanges {
     tieu_de = 'adsf';
     noi_dung = 'dsfg';
     @Input('chi_tiet') chi_tiet;
+    @Input('type') type;
     constructor() { }
     ngOnInit() {
     }

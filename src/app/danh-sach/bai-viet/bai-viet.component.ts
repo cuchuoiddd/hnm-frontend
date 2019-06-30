@@ -14,13 +14,18 @@ export class BaiVietComponent implements OnInit,OnChanges {
     url_mac_dinh = 'http://hoi-nguoi-mu.gdk.com.vn';
     @Input('bai_viet') bai_viet;
     @Input('total') total_bai_viet;
+    @Input('type') type;
+
     @Output() PageChange = new EventEmitter(); 
     constructor() { }
     ngOnInit() {
+        console.log();
+        
     }
     onPageChange(event) {
         this.PageChange.emit(event);
         // this.pageNumber = event.pageNumber;
+        
     }
     ngOnChanges(changes: SimpleChanges): void {
         //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
@@ -28,5 +33,7 @@ export class BaiVietComponent implements OnInit,OnChanges {
         this.data = this.bai_viet;
         this.total = this.total_bai_viet;
         this.ten_chuyen_muc = this.bai_viet[0].ten;
+        console.log(12313131,this.type);
+
     }
 }

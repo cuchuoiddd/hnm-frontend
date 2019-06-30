@@ -9,8 +9,8 @@ import { ChiTietAudioComponent } from './chi-tiet-audio/chi-tiet-audio.component
 const routes: Routes = [
     { path: '', component: TrangChuComponent },
     { path: ':id', component: DanhSachComponent },
-    { path: 'audio/:param', component: ChiTietAudioComponent},   
-    { path: ':chuyen_muc/:id', component: ChiTietBaiVietComponent },   
+    { path: 'audio/:chuyen_muc/:id', component: ChiTietAudioComponent},
+    { path: ':chuyen_muc/:id', component: ChiTietBaiVietComponent },
     { path: '**', redirectTo: '' }
 ];
 
