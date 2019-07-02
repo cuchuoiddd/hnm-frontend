@@ -82,8 +82,6 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                     }).subscribe(s => {
                         if (s.ok && s.data.length > 0) {
                             const phan_loai = s.data[0].phan_loai;
-                            // this.type = s.data[0].phan_loai;
-                            // console.log(123123,this.type, s.data);
                             switch (phan_loai) {
                                 case 'bai_viet':
                                     this.action_bai_viet = true;

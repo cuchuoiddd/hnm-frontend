@@ -1,6 +1,11 @@
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-4" *ngFor="let item of data">
         <iframe width="100%" height="auto" [src]="item.video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
+    </div>
+</div> -->
+<div class="row">
+    <div *ngFor="let item of data">
+        <h3><a [routerLink]="['/video/'+ item.url + '/' + item.bai_viet.url]">{{item.bai_viet.tieu_de}}</a></h3>
     </div>
 </div>

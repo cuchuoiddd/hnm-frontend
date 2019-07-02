@@ -1,0 +1,25 @@
+<div class="margin-top">
+    <div class="boxblog group" *ngFor="let item of data">
+        <ul class="title1">
+            <li>
+                <h2>{{item.tieu_de}} </h2>
+            </li>   
+        </ul>
+        <div class="" *ngIf="chi_tiet_video">
+                <iframe width="100%" height="auto" [src]="chi_tiet_video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+        <div class="blog group">
+            <div class="row" *ngFor="let item1 of item.link">
+                <div class="block-left col-md-6 col-sm-6 col-xs-6">
+                    <a href="javascript:">{{item1.title}}</a>
+                </div>
+                <div class="block-right col-md-6 col-sm-6 col-xs-6">
+                    <h3>
+                        <a href="javascript:" class="btn btn-primary" (click)="fnXem(item1)">Xem Video</a>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

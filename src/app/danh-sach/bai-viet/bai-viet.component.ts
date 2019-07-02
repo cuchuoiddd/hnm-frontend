@@ -19,8 +19,6 @@ export class BaiVietComponent implements OnInit,OnChanges {
     @Output() PageChange = new EventEmitter(); 
     constructor() { }
     ngOnInit() {
-        console.log();
-        
     }
     onPageChange(event) {
         this.PageChange.emit(event);
@@ -33,7 +31,5 @@ export class BaiVietComponent implements OnInit,OnChanges {
         this.data = this.bai_viet;
         this.total = this.total_bai_viet;
         this.ten_chuyen_muc = this.bai_viet[0].ten;
-        console.log(12313131,this.type);
-
     }
 }

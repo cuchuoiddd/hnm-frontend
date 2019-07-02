@@ -12,10 +12,11 @@ export class ChiTietAudioComponent implements OnInit {
     id = '';
     param_chuyen_muc = '';
     title = '';
-    tac_gia = '';
-    the_loai = '';
-    ds_audio = [];
+    data = [];
+    data_reset = [];
     chi_tiet_audio = null;
+    search_category = '';
+    search_author = '';
     constructor(
         private route: ActivatedRoute,
         private gdkClient: GdkHttpClientService,
@@ -40,20 +41,36 @@ export class ChiTietAudioComponent implements OnInit {
 
             if (s.ok && s.data.length > 0) {
                 this.title = s.data[0].tieu_de || '';
-                this.tac_gia = s.data[0].tac_gia || '';
-                this.the_loai = s.data[0].the_loai || '';
                 const mo_ta = s.data[0].mo_ta || '';
                 this.titleService.setTitle(this.title);
                 this.meta.updateTag({ name: "description", content: mo_ta });
-                this.ds_audio = s.data[0].link;
+                this.data = s.data;
+                this.data_reset = s.data;
                 // this.ds_audio = s.data[0].link.map(m=>{return{title:m.title,link:this.sanitizer.bypassSecurityTrustResourceUrl(m.link)}});
-                console.log(79877,s.data, this.tac_gia,this.the_loai);
-
-            } else this.ds_audio = [];
+                
+            } else { this.data = []; this.data_reset = []; }
         })
     }
-    fnDoc(item){
-        this.chi_tiet_audio = this.sanitizer.bypassSecurityTrustResourceUrl(item.link+'?autoplay=1');
+    fnDoc(item) {
+        this.chi_tiet_audio = this.sanitizer.bypassSecurityTrustResourceUrl(item.link + '?autoplay=1');
+    }
+    search(tac_gia) {
+        tac_gia == true ? this.search_category = '' : this.search_author = '';
+        this.gdkClient.queryPublicData({
+            reqData: {
+                reqid: '16bab86d487',
+                parms: [this.search_author, this.search_category, this.param_chuyen_muc]
+            }
+        }).subscribe(s => {
+            if (s.ok && s.data.length > 0) {
+                this.data = s.data;
+            } else { this.data = [] }
+        })
+    }
+    reset(){
+        this.data = this.data_reset;
+        this.search_author = '';
+        this.search_category = '';
     }
 
 }

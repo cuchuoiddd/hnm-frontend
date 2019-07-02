@@ -1,22 +1,56 @@
-<div id="qcbanner" class="row">
+<div class="row">
+    <div class="alt-tab">
+        <button class="btn-tab" (click)="btnTabVideo(true)">Video</button>
+    </div>
+    <div class="alt-tab">
+        <button class="btn-tab" (click)="btnTabVideo(false)">Hình ảnh</button>
+    </div>
+</div>
+<div id="qcbanner" class="row" *ngIf="tab_video">
     <div class="boxmiddle2">
-        
         <div class="contentmiddle2">
             <div id="iframevideo">
                 <iframe width="100%" height="auto" [src]="safeSrc" frameborder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
                 <!-- <iframe width="100%" height="auto" src="{{video_moi_nhat['bai_viet'].video}}" frameborder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
             </div>
             <ul class="postmd2">
-                <li *ngFor="let item of ds_video"><a (click)="clickVideo(item)" title="{{item.bai_viet.tieu_de}}" href="javascript:">{{item.bai_viet.tieu_de}}</a></li>
+                <li *ngFor="let item of ds_video"><a (click)="clickVideo(item)" title="{{item.bai_viet.tieu_de}}"
+                        href="javascript:">{{item.bai_viet.tieu_de}}</a></li>
             </ul>
         </div>
         <div class="text-right">
-            <a title="" [routerLink]="[url_video ? url_video : '']" >Xem tất cả</a>
+            <a title="" [routerLink]="[url_video ? url_video : '']">Xem tất cả</a>
         </div>
     </div>
+</div>
 
+<div class="boxmiddle1 carousel slide" *ngIf="!tab_video">
+    <ul class="title1">
+        <li><a title="Bấm vào đây để xem thư viện ảnh">
+                <h2>{{thu_vien_hinh_anh[0].ten ? thu_vien_hinh_anh[0].ten : ""}}</h2>
+            </a></li>
+    </ul>
+    <div class="carousel-inner">
+        <a data-toggle="modal" data-target="#myModal">
+            <img src="{{url_mac_dinh}}/{{thu_vien_hinh_anh[0].bai_viet.hinh_anh ? thu_vien_hinh_anh[0].bai_viet.hinh_anh[0].hinh_anh : ''}}"
+                alt="{{thu_vien_hinh_anh[0].bai_viet.tieu_de ? thu_vien_hinh_anh[0].bai_viet.tieu_de : ''}}">
+        </a>
+        <p>{{thu_vien_hinh_anh[0].bai_viet.tieu_de ? thu_vien_hinh_anh[0].bai_viet.tieu_de : ''}}</p>
+        <div class="text-right">
+            <a [routerLink]="[url]" style="color: white; margin-right: 30px;">Xem tất cả</a>
+        </div>
+    </div>
+    <a class="left carousel-control" href="javascript:" data-slide="prev" (click)="prev()">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="javascript:" data-slide="next" (click)="next()">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
 <div class="row">
     <app-main-middle></app-main-middle>

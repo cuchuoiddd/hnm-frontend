@@ -1,0 +1,12 @@
+<div class="margin-top" *ngFor="let item of data">
+    <ul class="title1">
+        <li>
+            <h2>{{item.tieu_de}} </h2>
+        </li>
+    </ul>
+    <div class="row hinh-anh">
+        <div class="col-md-3 image" *ngFor="let item1 of item.hinh_anh">
+            <img src="{{url_mac_dinh}}/{{item1.hinh_anh}}" alt="{{item.tieu_de}}">
+        </div>
+    </div>
+</div>

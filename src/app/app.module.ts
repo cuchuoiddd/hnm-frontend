@@ -24,6 +24,9 @@ import { ChiTietComponent } from './danh-sach/chi-tiet/chi-tiet.component';
 import { ChiTietBaiVietComponent } from './chi-tiet-bai-viet/chi-tiet-bai-viet.component';
 import { ChuyenMucComponent } from './danh-sach/chuyen-muc/chuyen-muc.component';
 import { ChiTietAudioComponent } from './chi-tiet-audio/chi-tiet-audio.component';
+import { ChiTietVideoComponent } from './chi-tiet-video/chi-tiet-video.component';
+import { ChiTietImageComponent } from './chi-tiet-image/chi-tiet-image.component';
+import { FormsModule } from '@angular/forms';
 
 const appConfig: GdkConfigUrl = {
     urlBaseServer: 'http://3114.gdk.com.vn:3116'
@@ -46,13 +49,16 @@ const appConfig: GdkConfigUrl = {
         HinhAnhComponent,
         ChiTietBaiVietComponent,
         ChuyenMucComponent,
-        ChiTietAudioComponent
+        ChiTietAudioComponent,
+        ChiTietVideoComponent,
+        ChiTietImageComponent
     ],
     imports: [
-BrowserModule,
+        BrowserModule,
         AppRoutingModule,
         HttpClientModule,
         EasyUIModule,
+        FormsModule,
         GdkHttpClientConfigModule.forRoot(appConfig),
         TranslateModule.forRoot({
             loader: {

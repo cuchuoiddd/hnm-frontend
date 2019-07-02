@@ -34,17 +34,17 @@
         </ul>
         <div *ngIf="item.children">
             <div class="blog group" *ngFor="let item1 of item.children">
-                <div class="block-left col-md-2 col-sm-2 col-xs-12" *ngIf="item1.bai_viet.length > 0">
-                    <div *ngIf="item1.bai_viet[0].hinh_anh">
+                <div class="block-left col-md-2 col-sm-2 col-xs-12" *ngIf="item1.bai_viet.length > 0 && item1.bai_viet[0].hinh_anh.length > 0">
+                    <!-- <div *ngIf="item1.bai_viet[0].hinh_anh"> -->
                         <a [routerLink]="[item1.url+'/'+item1.bai_viet[0].url]"
                             routerLinkActive="router-link-active"><img
-                                src="{{url_mac_dinh}}/{{item1.bai_viet[0].hinh_anh[0].hinh_anh}}"
+                                src="{{url_mac_dinh}}/{{item1.bai_viet[0].hinh_anh.length > 0 ? item1.bai_viet[0].hinh_anh[0]['hinh_anh'] : ''}}"
                                 alt="{{item1.bai_viet[0].tieu_de}}" style="width: 126px" />
                         </a>
-                    </div>
+                    <!-- </div> -->
                 </div>
 
-                <div class="block-right col-md-9 col-sm-9 col-xs-12" *ngIf="item1.bai_viet.length > 0">
+                <div [ngClass]="item1.bai_viet[0].hinh_anh.length > 0 ? 'block-right col-md-9 col-sm-9 col-xs-12' : 'block-right col-md-12 col-sm-12 col-xs-12'" *ngIf="item1.bai_viet.length > 0">
                     <div class="tinmoi">
                         <ul class="dongtin">
                             <li>
@@ -63,16 +63,14 @@
         </div>
         <div *ngIf="item.bai_viet && item.bai_viet.length > 0">
             <div class="blog group" *ngFor="let item1 of item.bai_viet">
-                <div class="block-left col-md-2 col-sm-2 col-xs-12">
-                    <div *ngIf="item1.hinh_anh">
+                <div class="block-left col-md-2 col-sm-2 col-xs-12" *ngIf="item1.hinh_anh">
                         <a [routerLink]="[item.url+'/'+item1.url]" routerLinkActive="router-link-active"><img
                                 src="{{url_mac_dinh}}/{{item1.hinh_anh[0].hinh_anh}}" alt="{{item1.tieu_de}}"
                                 style="width: 126px" />
                         </a>
-                    </div>
                 </div>
 
-                <div class="block-right col-md-9 col-sm-9 col-xs-12">
+                <div [ngClass]="item1.hinh_anh.length > 0 ? 'block-right col-md-9 col-sm-9 col-xs-12' : 'block-right col-md-12 col-sm-12 col-xs-12'">
                     <div class="tinmoi">
                         <ul class="dongtin">
                             <li>

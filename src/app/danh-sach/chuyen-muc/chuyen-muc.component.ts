@@ -19,8 +19,6 @@ export class ChuyenMucComponent implements OnInit,OnChanges {
         //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
         //Add '${implements OnChanges}' to the class.
         this.data = this.chuyen_muc;
-        console.log(946546464,this.data);
-        
     }
 
 }

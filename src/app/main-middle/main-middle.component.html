@@ -1,14 +1,14 @@
 <div id="mainmiddle">
-    <div class="boxmiddle1 carousel slide">
-        <!-- <div class="titboxmidle1">
-            <a title="Bấm vào đây để xem thư viện ảnh" [routerLink]="[thu_vien_hinh_anh ? thu_vien_hinh_anh[0].url : '']" routerLinkActive="router-link-active" >{{thu_vien_hinh_anh[0].ten ? thu_vien_hinh_anh[0].ten : ""}}</a>
-        </div> -->
+    <!-- <div class="boxmiddle1 carousel slide">
         <ul class="title1"><li><a title="Bấm vào đây để xem thư viện ảnh" ><h2>{{thu_vien_hinh_anh[0].ten ? thu_vien_hinh_anh[0].ten : ""}}</h2></a></li></ul>
         <div class="carousel-inner">
             <a data-toggle="modal" data-target="#myModal">
                 <img src="{{url_mac_dinh}}/{{thu_vien_hinh_anh[0].bai_viet.hinh_anh ? thu_vien_hinh_anh[0].bai_viet.hinh_anh[0]['hinh_anh'] : ''}}" alt="{{thu_vien_hinh_anh[0].bai_viet.tieu_de ? thu_vien_hinh_anh[0].bai_viet.tieu_de : ''}}">
             </a>
             <p>{{thu_vien_hinh_anh[0].bai_viet.tieu_de ? thu_vien_hinh_anh[0].bai_viet.tieu_de : ''}}</p>
+            <div class="text-right">
+                <a [routerLink]="[url]" style="color: white; margin-right: 30px;">Xem tất cả</a>
+            </div>
         </div>
         <a class="left carousel-control" href="javascript:" data-slide="prev" (click)="prev()">
             <span class="glyphicon glyphicon-chevron-left"></span>
@@ -18,7 +18,7 @@
             <span class="glyphicon glyphicon-chevron-right"></span>
             <span class="sr-only">Next</span>
           </a>
-    </div>
+    </div> -->
 
     <div class="boxmiddle3" *ngFor="let item of chuyen_muc_khac">
         <!-- <div class="titboxmidle3">
