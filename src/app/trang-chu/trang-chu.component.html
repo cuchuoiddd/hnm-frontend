@@ -44,7 +44,7 @@
                     <!-- </div> -->
                 </div>
 
-                <div [ngClass]="item1.bai_viet[0].hinh_anh.length > 0 ? 'block-right col-md-9 col-sm-9 col-xs-12' : 'block-right col-md-12 col-sm-12 col-xs-12'" *ngIf="item1.bai_viet.length > 0">
+                <div [ngClass]="item1.bai_viet[0].hinh_anh.length > 0 ? 'block-right col-md-9 col-sm-9 col-xs-12' : 'block-right col-md-11 col-sm-11 col-xs-12'" *ngIf="item1.bai_viet.length > 0">
                     <div class="tinmoi">
                         <ul class="dongtin">
                             <li>
@@ -53,7 +53,7 @@
                                         ? item1.bai_viet[0].tieu_de : ""}}
                                 </a>
                                 <p class="text">{{item1.bai_viet ? item1.bai_viet[0].mo_ta : ""}}</p>
-                                <p class="pull-right xem-tiep"><a [routerLink]="[item1.url]">Xem tiếp
+                                <p class="pull-right"><a [routerLink]="[item1.url]" class="xem-tiep">Xem tiếp
                                         <strong>{{item1.ten}}</strong></a></p>
                             </li>
                         </ul>
@@ -70,7 +70,7 @@
                         </a>
                 </div>
 
-                <div [ngClass]="item1.hinh_anh.length > 0 ? 'block-right col-md-9 col-sm-9 col-xs-12' : 'block-right col-md-12 col-sm-12 col-xs-12'">
+                <div [ngClass]="item1.hinh_anh.length > 0 ? 'block-right col-md-9 col-sm-9 col-xs-12' : 'block-right col-md-11 col-sm-11 col-xs-12'">
                     <div class="tinmoi">
                         <ul class="dongtin">
                             <li>
@@ -78,7 +78,7 @@
                                     routerLinkActive="router-link-active">{{item1.tieu_de}}
                                 </a>
                                 <p class="text">{{item1.mo_ta}}</p>
-                                <p class="pull-right xem-tiep"><a [routerLink]="[item.url]">Xem tiếp
+                                <p class="pull-right"><a [routerLink]="[item.url]" class="xem-tiep">Xem tiếp
                                         <strong>{{item1.ten}}</strong></a></p>
                             </li>
                         </ul>

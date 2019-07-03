@@ -39,10 +39,7 @@ export class TrangChuComponent implements OnInit {
         }).subscribe(s => {
             const aaa = this.buildMenu(s.data)
             if (s.ok) {
-                // this.ds_chuyen_muc = s.data;
                 this.ds_chuyen_muc = this.buildMenu(s.data);
-                console.log(6545646456,this.ds_chuyen_muc);
-                
             } else { this.ds_chuyen_muc = []; }
         })
     }

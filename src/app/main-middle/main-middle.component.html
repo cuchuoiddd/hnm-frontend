@@ -32,4 +32,13 @@
             <p>{{item1.mo_ta}}</p>
         </div>
     </div>
+    <div class="boxmiddle3" *ngFor="let item of data_lienket">
+        <ul class="title1"><li><h2>{{item.tieu_de}}</h2></li></ul>
+        <div class="contentmiddle3">
+            <!-- <a [routerLink]="[item.url +'/'+ item1.url]" routerLinkActive="router-link-active" >
+                <strong>{{item1.tieu_de}} </strong>
+            </a> -->
+            <p innerHTML="{{item.noi_dung}}"></p>
+        </div>
+    </div>
 </div>

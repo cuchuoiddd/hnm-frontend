@@ -1,10 +1,18 @@
 .tin-moi {
     ul.dongtin li:nth-child(2) {
-        font-weight: bold;
         background-image: none;
 
         p {
             line-height: 1.25;
+        }
+    }
+}
+
+.block-right {
+    .tinmoi {
+        ul.dongtin li {
+            line-height: 18px;
+            margin-bottom: 10px;
         }
     }
 }
@@ -25,4 +33,5 @@
 
 .xem-tiep {
     font-weight: initial;
+    font-size: 12px;
 }

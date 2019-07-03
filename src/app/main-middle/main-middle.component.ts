@@ -18,12 +18,14 @@ export class MainMiddleComponent implements OnInit {
     url_mac_dinh = 'http://hoi-nguoi-mu.gdk.com.vn';
     data = [];
     url = '';
+    data_lienket = [];
     hinh_anh_active = 0;
     constructor(private gdkClient: GdkHttpClientService) { }
 
     ngOnInit() {
         // this.hinhAnh();
         this.dsChuyenMucKhac();
+        this.lienKetWeb();
     }
     hinhAnh() {
         this.gdkClient.queryPublicData({
@@ -74,6 +76,17 @@ export class MainMiddleComponent implements OnInit {
             }
         }).subscribe(s => {
             if (s.ok && s.data.length > 0) { this.chuyen_muc_khac = s.data } else { this.chuyen_muc_khac = [] }
+        })
+    }
+    lienKetWeb(){
+        this.gdkClient.queryPublicData({
+            reqData:{
+                reqid:'16bb731050a'
+            }
+        }).subscribe(s=>{
+            if(s.ok && s.data.length > 0){
+                this.data_lienket = s.data;
+            } else { this.data_lienket = [];}
         })
     }
 

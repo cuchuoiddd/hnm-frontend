@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { GdkHttpClientService } from '@gdkmd/httpxhd';
 import { ActivatedRoute, Router, RouterState } from '@angular/router';
 import { Meta, Title, DomSanitizer } from '@angular/platform-browser';
@@ -17,6 +17,10 @@ export class ChiTietAudioComponent implements OnInit {
     chi_tiet_audio = null;
     search_category = '';
     search_author = '';
+    url_mac_dinh = 'http://hoi-nguoi-mu.gdk.com.vn';
+    @ViewChild('audioOption') audioPlayerRef: ElementRef;
+
+
     constructor(
         private route: ActivatedRoute,
         private gdkClient: GdkHttpClientService,
@@ -52,7 +56,7 @@ export class ChiTietAudioComponent implements OnInit {
         })
     }
     fnDoc(item) {
-        this.chi_tiet_audio = this.sanitizer.bypassSecurityTrustResourceUrl(item.link + '?autoplay=1');
+        this.chi_tiet_audio = item.link;
     }
     search(tac_gia) {
         tac_gia == true ? this.search_category = '' : this.search_author = '';
