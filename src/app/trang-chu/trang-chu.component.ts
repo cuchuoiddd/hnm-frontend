@@ -33,14 +33,15 @@ export class TrangChuComponent implements OnInit {
     dsChuyenMuc() {
         this.gdkClient.queryPublicData({
             reqData: {
-                // reqid: '16b444ff422'
-                reqid:'16b91ec0e98'
+                reqid: '16bbbfcbe03'
+                // reqid:'16b91ec0e98'
             }
         }).subscribe(s => {
             const aaa = this.buildMenu(s.data)
             if (s.ok) {
                 this.ds_chuyen_muc = this.buildMenu(s.data);
             } else { this.ds_chuyen_muc = []; }
+            console.log(789789,this.ds_chuyen_muc)
         })
     }
     buildMenu(arrs: any[], cap: string = 'mac-dinh'): any[] {

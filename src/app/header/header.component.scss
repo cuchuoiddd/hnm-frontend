@@ -1,0 +1,19 @@
+.menu-parent {
+    font-size: 16px
+}
+.menu-item {
+    font-size: 16px
+}
+
+.nav>li>.menu-parent {
+    padding: 0px 30px;
+    line-height: 0px;
+}
+.main-menu2{height: 40px;}
+.item-with-ul{height: 40px;}
+.btr-menu > li > ul > li > .menu-item {
+    width: 300px;
+    padding: 10px;
+    display: block;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}

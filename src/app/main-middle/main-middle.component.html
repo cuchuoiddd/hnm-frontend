@@ -24,21 +24,44 @@
         <!-- <div class="titboxmidle3">
             <a title="" [routerLink]="[item.url]" routerLinkActive="router-link-active" >{{item.ten}}</a>
         </div> -->
-        <ul class="title1"><li><a  [routerLink]="[item.url]" routerLinkActive="router-link-active"><h2>{{item.ten}}</h2></a></li></ul>
+        <ul class="title1">
+            <li><a [routerLink]="[item.url]" routerLinkActive="router-link-active">
+                    <h2>{{item.ten}}</h2>
+                </a></li>
+        </ul>
         <div class="contentmiddle3" *ngFor="let item1 of item.bai_viet">
-            <a [routerLink]="[item.url +'/'+ item1.url]" routerLinkActive="router-link-active" >
+            <a [routerLink]="[item.url +'/'+ item1.url]" routerLinkActive="router-link-active">
                 <strong>{{item1.tieu_de}} </strong>
             </a>
             <p>{{item1.mo_ta}}</p>
         </div>
     </div>
+    <div class="boxmiddle3">
+        <ul class="title1">
+            <li>
+                <a>
+                    <h2>Văn học nghệ thuật</h2>
+                </a>
+            </li>
+        </ul>
+        <div class="contentmiddle3" *ngFor="let item of van_hoc_nghe_thuat">
+            <a [routerLink]="['/'+ item.url]">
+                <strong>{{item.ten}}</strong>
+            </a>
+        </div>
+    </div>
+
     <div class="boxmiddle3" *ngFor="let item of data_lienket">
-        <ul class="title1"><li><h2>{{item.tieu_de}}</h2></li></ul>
+        <ul class="title1">
+            <li>
+                <h2>{{item.bai_viet.tieu_de}}</h2>
+            </li>
+        </ul>
         <div class="contentmiddle3">
             <!-- <a [routerLink]="[item.url +'/'+ item1.url]" routerLinkActive="router-link-active" >
                 <strong>{{item1.tieu_de}} </strong>
             </a> -->
-            <p innerHTML="{{item.noi_dung}}"></p>
+            <p innerHTML="{{item.bai_viet.noi_dung}}"></p>
         </div>
     </div>
 </div>

@@ -36,85 +36,20 @@
         });
     });
 </script>
-<script type='text/javascript'>
-    function trimTrailingSlash(string) {
-        if (string != null) {
-            return string.replace(/\/+$/, '');
-        } else {
-            return string;
-        }
-    }
-    if (!String.prototype.trim) {
-        String.prototype.trim = function () {
-            return this.replace(/^\s+|\s+$/g, '');
-        };
-    }
-    ctrHref = trimTrailingSlash('https://www.symptoma.ro/'.trim());
-    ctrHref2 = trimTrailingSlash('https://www.symptoma.ro/'.trim());
-    eInDoc = function (e) {
-        while (e = e.parentNode) {
-            if (e == document) {
-                return true;
-            }
-        }
-        return false;
-    };
-    lCheck = function (l) {
-        if (null != l && null != l.getAttribute('href') && (ctrHref === '' || trimTrailingSlash(l.getAttribute('href').trim()) == ctrHref || trimTrailingSlash(l.href.trim()) == ctrHref || trimTrailingSlash(l.getAttribute('href').trim()) == ctrHref2 || trimTrailingSlash(l.href.trim()) == ctrHref2)) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    };
-    linkfound = false;
-    window.onload = function () {
-        els = document.getElementsByTagName('a');
-        l = els.length;
-        for (i = 0; i < l; i++) {
-            el = els[i];
-            if (trimTrailingSlash(el.href) === ctrHref || trimTrailingSlash(el.getAttribute('href')) === ctrHref || trimTrailingSlash(el.href) === ctrHref2 || trimTrailingSlash(el.getAttribute('href')) === ctrHref2) {
-                linkfound = true;
-                if (el.getAttribute('rel') == 'nofollow' || !eInDoc(el) || !lCheck(el)) {
-                    linkfound = false;
-                }
-                linktext = el.innerHTML;
-                if (linktext == undefined) {
-                    linkfound = false;
-                }
-                else if (linktext.trim() == '') {
-                    linkfound = false;
-                }
-                if (el.offsetHeight != undefined && el.offsetHeight < 8) {
-                    linkfound = false;
-                }
-
-                break;
-            }
-        }
-
-        if (linkfound) {
-            linkToHide = el;
-            linkToHide.innerHTML = '';
-        }
-
-        // if (linkfound == false) {
-
-        //     var div = document.createElement('div');
-        //     div.id = 'error_';
-        //     div.innerHTML = '<a href="http://www.freevisitorcounters.com/en/home/countercode/hashid/?id=45e8e1040aa0768f961532e78a4c9173b1fac3d9">Counter Error: Do not change the code. Click here to show the correct code!</a>';
-
-        //     if (document.getElementById('counterimg') != null) { document.getElementById('counterimg').parentNode.insertBefore(div, document.getElementById('counterimg').nextSibling); } else { document.body.appendChild(div); }
-
-        //     widget = document.getElementById('counterimg');
-        //     if (widget) {
-        //         widget.style.visibility = 'hidden';
-        //     }
-        // }
-    }
-</script>
+<script type="text/javascript" src="https://free-hit-counters.net/count/27z8"></script><br>
 <script type="text/javascript">
-    document.write('<a href="http://hoi-nguoi-mu.gdk.com.vn/" target="_blank"><br><img src="https://www.freevisitorcounters.com/ctrimg/counter-id-544682.png" border="0" class="counterimg"></a>');
+    $( document ).ready(function() {
+        let a = document.getElementById('besucherzaehler2').getElementsByTagName('g')[0].getElementsByTagName('text')[0];
+        let b = a.innerHTML.replace('Total','Tổng số');
+        a.innerHTML = b;
+        let c = document.getElementById('besucherzaehler2').getElementsByTagName('g')[0].getElementsByTagName('text')[1];
+        let d = c.innerHTML.replace('Today','Hôm nay');
+        c.innerHTML = d;
+        let e = document.getElementById('besucherzaehler2').getElementsByTagName('g')[0].getElementsByTagName('text')[2];
+        let g = e.innerHTML.replace('Yesterday','Hôm qua');
+        e.innerHTML = g;
+    });
 </script>
+<a href='https://www.counters-free.net/'>www.Counters-Free.net</a> <script type='text/javascript' src='https://www.whomania.com/ctr?id=ef1055a86cc76afc57a5feaaeb7222505c11bbff'></script>
 
 </html>

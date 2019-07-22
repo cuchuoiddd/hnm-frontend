@@ -19,6 +19,7 @@ export class MainMiddleComponent implements OnInit {
     data = [];
     url = '';
     data_lienket = [];
+    van_hoc_nghe_thuat = [];
     hinh_anh_active = 0;
     constructor(private gdkClient: GdkHttpClientService) { }
 
@@ -26,6 +27,7 @@ export class MainMiddleComponent implements OnInit {
         // this.hinhAnh();
         this.dsChuyenMucKhac();
         this.lienKetWeb();
+        this.vanHocNgheThuat();
     }
     hinhAnh() {
         this.gdkClient.queryPublicData({
@@ -33,8 +35,8 @@ export class MainMiddleComponent implements OnInit {
                 reqid: '16b54162b1e'
             }
         }).subscribe(s => {
-            if (s.ok && s.data.length > 0) { 
-                this.data = s.data; 
+            if (s.ok && s.data.length > 0) {
+                this.data = s.data;
                 this.thu_vien_hinh_anh = [];
                 this.url = s.data[0].url;
                 this.thu_vien_hinh_anh.push(s.data[0]);
@@ -46,25 +48,25 @@ export class MainMiddleComponent implements OnInit {
             }
         })
     }
-    
-    getHinhAnhActive(position){
+
+    getHinhAnhActive(position) {
         this.thu_vien_hinh_anh = [];
         this.thu_vien_hinh_anh.push(this.data[position]);
     }
-    prev(){
-        if(this.hinh_anh_active == 0){
-            this.hinh_anh_active = this.data.length-1;
+    prev() {
+        if (this.hinh_anh_active == 0) {
+            this.hinh_anh_active = this.data.length - 1;
         } else {
-            this.hinh_anh_active -- ;
+            this.hinh_anh_active--;
         }
         this.getHinhAnhActive(this.hinh_anh_active);
-        
+
     }
-    next(){
-        if(this.hinh_anh_active == this.data.length-1){
+    next() {
+        if (this.hinh_anh_active == this.data.length - 1) {
             this.hinh_anh_active = 0;
         } else {
-            this.hinh_anh_active ++ ;
+            this.hinh_anh_active++;
         }
         this.getHinhAnhActive(this.hinh_anh_active);
 
@@ -78,16 +80,23 @@ export class MainMiddleComponent implements OnInit {
             if (s.ok && s.data.length > 0) { this.chuyen_muc_khac = s.data } else { this.chuyen_muc_khac = [] }
         })
     }
-    lienKetWeb(){
+    lienKetWeb() {
         this.gdkClient.queryPublicData({
-            reqData:{
-                reqid:'16bb731050a'
+            reqData: {
+                reqid: '16bb731050a'
             }
-        }).subscribe(s=>{
-            if(s.ok && s.data.length > 0){
+        }).subscribe(s => {
+            if (s.ok && s.data.length > 0) {
                 this.data_lienket = s.data;
-            } else { this.data_lienket = [];}
+            } else { this.data_lienket = []; }
         })
+    }
+    vanHocNgheThuat() {
+        this.gdkClient.queryPublicData({
+            reqData: {
+                reqid: '16c0dbbd0fc'
+            }
+        }).subscribe(s => { if (s.ok) { this.van_hoc_nghe_thuat = s.data } else {this.van_hoc_nghe_thuat = []} })
     }
 
 }

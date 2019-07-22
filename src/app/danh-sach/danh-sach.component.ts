@@ -73,7 +73,11 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                             this.meta.updateTag({ name: "description", content: mo_ta });
                         }
                     })
-                } else {
+                } 
+                else if(sc.data[0].phan_loai == 'van_hoc_nghe_thuat') {
+                    console.log(7897987)
+                }
+                else {
                     this.gdkClient.queryPublicData({
                         reqData: {
                             reqid: '16b44938176',
