@@ -1,6 +1,7 @@
 .menu-parent {
     font-size: 16px
 }
+
 .menu-item {
     font-size: 16px
 }
@@ -9,11 +10,44 @@
     padding: 0px 30px;
     line-height: 0px;
 }
-.main-menu2{height: 40px;}
-.item-with-ul{height: 40px;}
-.btr-menu > li > ul > li > .menu-item {
+
+.main-menu2 {
+    height: 40px;
+}
+
+.item-with-ul {
+    height: 40px;
+}
+
+.btr-menu>li>ul>li>.menu-item {
     width: 300px;
     padding: 10px;
     display: block;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.menu-mobile {
+    display: none !important;
+}
+
+@media (max-width: 767.98px) {
+    #bannertop {
+        .hidden-lag img {
+            height: auto !important;
+        }
+    }
+
+    .menu-mobile {
+        display: block !important;
+
+        .caret {
+            display: unset;
+            margin-left: 15px;
+            vertical-align: text-bottom;
+            border-top: 6px dashed;
+            border-right: 6px solid transparent;
+            border-left: 6px solid transparent;
+        }
+    }
+
 }

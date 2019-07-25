@@ -74,9 +74,9 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                         }
                     })
                 } 
-                else if(sc.data[0].phan_loai == 'van_hoc_nghe_thuat') {
-                    console.log(7897987)
-                }
+                // else if(sc.data[0].phan_loai == 'nguoi_mu_sang_tac' || 'nguoi_mu_bieu_dien') {
+                //     console.log(7897987)
+                // }
                 else {
                     this.gdkClient.queryPublicData({
                         reqData: {
@@ -86,6 +86,7 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                     }).subscribe(s => {
                         if (s.ok && s.data.length > 0) {
                             const phan_loai = s.data[0].phan_loai;
+                            console.log(98789797,phan_loai);
                             switch (phan_loai) {
                                 case 'bai_viet':
                                     this.action_bai_viet = true;
@@ -107,11 +108,23 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                                     this.action_audio = true;
                                     this.data_audio = s.data;
                                     break;
+                                case 'nguoi_mu_bieu_dien':
+                                    this.action_audio = true;
+                                    this.data_audio = s.data;
+                                    break;
                                 case 'link_tai':
                                     const title_link_tai = s.data[0].ten|| '';
                                     const mo_ta_link_tai = s.data[0].mo_ta || '';
                                     this.titleService.setTitle(title_link_tai);
                                     this.meta.updateTag({ name: "description", content: mo_ta_link_tai });
+                                    this.action_download = true;
+                                    this.data_download = s.data || [];
+                                    break;
+                                case 'nguoi_mu_sang_tac':
+                                    const title_link = s.data[0].ten|| '';
+                                    const mo_ta_link = s.data[0].mo_ta || '';
+                                    this.titleService.setTitle(title_link);
+                                    this.meta.updateTag({ name: "description", content: mo_ta_link });
                                     this.action_download = true;
                                     this.data_download = s.data || [];
                                     break;
