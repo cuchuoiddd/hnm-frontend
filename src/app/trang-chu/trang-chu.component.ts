@@ -41,7 +41,6 @@ export class TrangChuComponent implements OnInit {
             if (s.ok) {
                 this.ds_chuyen_muc = this.buildMenu(s.data);
             } else { this.ds_chuyen_muc = []; }
-            console.log(789789,this.ds_chuyen_muc)
         })
     }
     buildMenu(arrs: any[], cap: string = 'mac-dinh'): any[] {

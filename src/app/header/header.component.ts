@@ -48,4 +48,21 @@ export class HeaderComponent implements OnInit {
             }
         })
     }
+    show_sub_menu(id) {
+        var x = document.getElementById(id);
+        if (x) {
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+    }
+    isShowMenu(event) {
+        var y = document.getElementById("menu-mobile").getAttribute("aria-expanded");
+        if (y == 'true') {
+            document.getElementById('menu-mobile').click()
+        }
+    }
 }

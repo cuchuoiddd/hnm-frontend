@@ -9,7 +9,7 @@
     </div>
     <ul class="dongtin">
         <li *ngFor="let item1 of item.bai_viet">
-            <a *ngIf="item1.id != item.bai_viet_moi[0].id" routerLink="/{{item.ds_menu_con.phan_loai == 'audio' ? 'audio' : item.ds_menu_con.phan_loai == 'video' ? 'video' : item.ds_menu_con.phan_loai == 'hinh_anh' ? 'image' : ''}}/{{item.ds_menu_con.url}}/{{item1.url}}" >{{item1.tieu_de}}</a>
+            <a class="text" *ngIf="item1.id != item.bai_viet_moi[0].id" routerLink="/{{item.ds_menu_con.phan_loai == 'audio' ? 'audio' : item.ds_menu_con.phan_loai == 'video' ? 'video' : item.ds_menu_con.phan_loai == 'hinh_anh' ? 'image' : ''}}/{{item.ds_menu_con.url}}/{{item1.url}}" >{{item1.tieu_de}}</a>
         </li>
     </ul>
     <p align="right"><b><a [routerLink]="['/'+item.ds_menu_con.url]" >Xem tiếp</a></b></p>

@@ -1,12 +1,13 @@
 <style>
-ul.nav h1>a {
-    display: inline;
-    
-}
-ul.nav h1 a.item-sub {
- padding-left: 0px;
- padding-right: 20px;
-}
+    ul.nav h1>a {
+        display: inline;
+
+    }
+
+    ul.nav h1 a.item-sub {
+        padding-left: 0px;
+        padding-right: 20px;
+    }
 </style>
 <div id="header">
     <div id="bannertop" class="row">
@@ -14,20 +15,23 @@ ul.nav h1 a.item-sub {
             <!-- <img src="assets/images/header.png" style="height: 276px;" alt="banner"/> -->
             <img src="{{url_mac_dinh}}/{{data[0].banner}}" style="height: 276px;" alt="banner" />
             <div class="search">
-                
+
             </div>
         </div>
     </div>
     <div class="header-bottom">
         <div class="navbar-header2">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu3"
-                aria-controls="
-                " aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu3" aria-controls="
+                " aria-expanded="false" aria-label="Toggle navigation" id="menu-mobile">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false">
+                    <title>Menu</title>
+                    <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10"
+                        d="M4 7h22M4 15h22M4 23h22"></path>
+                </svg>
             </button>
         </div>
         <!-- .navbar-header -->
@@ -40,7 +44,7 @@ ul.nav h1 a.item-sub {
                             <i class="caret dropdown" *ngIf="item.children && item.children.length > 0"></i>
                         </a>
                     </h1>
-                    <ul  *ngIf="item.children && item.children.length > 0">
+                    <ul *ngIf="item.children && item.children.length > 0">
                         <li *ngFor="let item1 of item.children">
                             <h1 class="menu-item">
                                 <a [routerLink]="[item1.url]" routerLinkActive="router-link-active"
@@ -55,29 +59,31 @@ ul.nav h1 a.item-sub {
         </div>
 
 
-        
+
         <div class="collapse navbar-collapse menu-mobile" id="menu3">
-                <ul class="nav navbar-nav main-menu2 group">
-                    <li class="item-with-ul" *ngFor="let item of data_menu">
-                        <h1 class="menu-parent">
-                            <a [routerLink]="[item.url]" title="{{item.ten}}">
-                                {{item.ten}}
-                            </a>
-                            <a class="item-sub" data-toggle="dropdown" *ngIf="item.children && item.children.length > 0" role="button" v-model="selected" aria-haspopup="true" aria-expanded="false"><i class="caret"></i></a>
-                        </h1>
-                        <ul class="dropdown-menu" *ngIf="item.children && item.children.length > 0">
-                            <li class="dropdown-item" *ngFor="let item1 of item.children">
-                                <h1 class="menu-item">
-                                    <a [routerLink]="[item1.url]" routerLinkActive="router-link-active"
-                                        title="{{item1.ten}}">
-                                        {{item1.ten}}
-                                    </a>
-                                </h1>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div> 
+            <ul class="nav navbar-nav main-menu2 group">
+                <li class="item-with-ul" *ngFor="let item of data_menu">
+                    <h1 class="menu-parent">
+                        <a [routerLink]="[item.url]" title="{{item.ten}}" (click)="isShowMenu($event)">
+                            {{item.ten}}
+                        </a>
+                        <a href="javascript:" (click)="show_sub_menu(item.id)"  class="item-sub" *ngIf="item.children && item.children.length > 0">
+                            <i class="caret"></i>
+                        </a>
+                    </h1>
+                    <ul id="{{item.id}}"  class="dropdown-menu" *ngIf="item.children && item.children.length > 0">
+                        <li class="dropdown-item" *ngFor="let item1 of item.children">
+                            <h1 class="menu-item">
+                                <a [routerLink]="[item1.url]" routerLinkActive="router-link-active"
+                                    title="{{item1.ten}}" class="menu-item_child" (click)="isShowMenu($event)">
+                                    {{item1.ten}}
+                                </a>
+                            </h1>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
         <!-- .navbar-collapse-->
     </div>
 </div>
