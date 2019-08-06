@@ -9,7 +9,7 @@ export class BaiVietComponent implements OnInit,OnChanges {
     data = [];
     total: number = 1;
     pageNumber: number = 1;
-    pageSize: number = 20;
+    pageSize: number = 10;
     ten_chuyen_muc = '';
     url_mac_dinh = 'http://hoi-nguoi-mu.gdk.com.vn';
     @Input('bai_viet') bai_viet;
@@ -19,6 +19,7 @@ export class BaiVietComponent implements OnInit,OnChanges {
     @Output() PageChange = new EventEmitter(); 
     constructor() { }
     ngOnInit() {
+        console.log(1231321231)
     }
     onPageChange(event) {
         this.PageChange.emit(event);

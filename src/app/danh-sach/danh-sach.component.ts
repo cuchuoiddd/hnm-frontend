@@ -11,7 +11,7 @@ import { Meta, Title } from '@angular/platform-browser';
 export class DanhSachComponent implements OnInit, OnDestroy {
     total: number = 0;
     pageNumber: number = 1;
-    pageSize: number = 20;
+    pageSize: number = 2;
     param = '';
     data_download = [];
     data_bai_viet = [];
@@ -38,6 +38,7 @@ export class DanhSachComponent implements OnInit, OnDestroy {
             this.dsBaiViet();
         })
     }
+    
     dsBaiViet() {
         this.gdkClient.queryPublicData({
             reqData: {
@@ -64,6 +65,7 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                             parms: [this.param]
                         }
                     }).subscribe(s => {
+                        console.log(34234,s)
                         if (s.ok && s.data.length > 0) {
                             this.action_chuyen_muc = true;
                             this.data_chuyen_muc = s.data;

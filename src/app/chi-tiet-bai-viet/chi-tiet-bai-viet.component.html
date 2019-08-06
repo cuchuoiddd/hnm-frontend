@@ -6,7 +6,8 @@
             </li>
         </ul>
         <div class="content_detail">
-            <a href="javascript:" class="mo-ta">{{item.tieu_de ? item.tieu_de : ""}}</a>
+            <a href="javascript:" class="tieu-de">{{item.tieu_de ? item.tieu_de : ""}}</a>
+            <p class="mo-ta">{{item.mo_ta ? item.mo_ta : ""}}</p>
             <div class="box-info f-left" [innerHTML]="item ? item.noi_dung :''">
                 <!-- {{tin_moi && tin_moi.bai_viet ? tin_moi.bai_viet.noi_dung : ""}} -->
             </div>

@@ -10,7 +10,8 @@
                 <a routerLink="/{{item.url}}/{{item.bai_viet.url}}">{{item.bai_viet.tieu_de}}</a>
             </h3>
         </div>
-        <p class="readmore"><a (click)="fn_download(item)" >Tải về</a></p>
+        <!-- <p class="readmore" *ngIf="item.bai_viet.link_download && item.bai_viet.link_download.length > 0"><a href="{{url_mac_dinh}}/{{item.bai_viet.link_download[0].link}}" download="{{item.bai_viet.link_download[0].file_name_download}}" >Tải về</a></p> -->
+        <p class="readmore" *ngIf="item.bai_viet.link_download && item.bai_viet.link_download.length > 0"><a (click)="fn_download(item)" >Tải về</a></p>
     </div>
     <eui-pagination [total]="total" [pageSize]="pageSize" [pageNumber]="pageNumber"
     (pageChange)="onPageChange($event)"></eui-pagination>

@@ -10,6 +10,7 @@ export class DownloadComponent implements OnInit, OnChanges {
     total: number = 1;
     pageNumber: number = 1;
     pageSize: number = 20;
+    url_mac_dinh = 'http://hoi-nguoi-mu.gdk.com.vn';
     @Input('download') data_download;
     @Input('total') total_download;
     @Output() PageChange = new EventEmitter();
@@ -21,6 +22,7 @@ export class DownloadComponent implements OnInit, OnChanges {
         //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
         //Add '${implements OnChanges}' to the class.
         this.data = this.data_download;
+        console.log(32131, this.data_download)
         this.total = this.total_download;
     }
     onPageChange(event) {
@@ -29,8 +31,21 @@ export class DownloadComponent implements OnInit, OnChanges {
 
 
     fn_download(item) {
-        var sourceHTML = item.bai_viet.noi_dung;
-        this.download(item.bai_viet.tieu_de + '.doc', sourceHTML);
+        // var sourceHTML = item.bai_viet.noi_dung;
+        // this.download(item.bai_viet.tieu_de + '.doc', sourceHTML);
+        var downloadLink = document.createElement("a");
+
+        document.body.appendChild(downloadLink);
+        // Create a link to the file
+        downloadLink.href = this.url_mac_dinh + item.bai_viet.link_download[0].link;
+
+        // Setting the file name
+        downloadLink.download = item.bai_viet.link_download[0].file_name_download;
+
+
+        //triggering the function
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
     }
 
     download(filename, text) {
