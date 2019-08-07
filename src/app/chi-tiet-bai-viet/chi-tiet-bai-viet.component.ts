@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { GdkHttpClientService } from '@gdkmd/httpxhd';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
@@ -6,7 +6,8 @@ import { Meta, Title } from '@angular/platform-browser';
 @Component({
     selector: 'app-chi-tiet-bai-viet',
     templateUrl: './chi-tiet-bai-viet.component.html',
-    styleUrls: ['./chi-tiet-bai-viet.component.scss']
+    styleUrls: ['./chi-tiet-bai-viet.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class ChiTietBaiVietComponent implements OnInit {
     url_mac_dinh = 'http://hoi-nguoi-mu.gdk.com.vn';

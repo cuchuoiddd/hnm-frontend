@@ -27,7 +27,8 @@ import { ChiTietAudioComponent } from './chi-tiet-audio/chi-tiet-audio.component
 import { ChiTietVideoComponent } from './chi-tiet-video/chi-tiet-video.component';
 import { ChiTietImageComponent } from './chi-tiet-image/chi-tiet-image.component';
 import { FormsModule } from '@angular/forms';
-
+import { SafeHtmllPipe } from '../pipes/safe-htmll.pipe';
+import { LightboxModule } from 'ngx-lightbox';
 const appConfig: GdkConfigUrl = {
     urlBaseServer: 'http://3114.gdk.com.vn:3116'
 };
@@ -51,7 +52,8 @@ const appConfig: GdkConfigUrl = {
         ChuyenMucComponent,
         ChiTietAudioComponent,
         ChiTietVideoComponent,
-        ChiTietImageComponent
+        ChiTietImageComponent,
+        SafeHtmllPipe
     ],
     imports: [
         BrowserModule,
@@ -66,7 +68,8 @@ const appConfig: GdkConfigUrl = {
                 useFactory: (createTranslateLoader),
                 deps: [HttpClient]
             }
-        })
+        }),
+        LightboxModule
     ],
     providers: [],
     bootstrap: [AppComponent]

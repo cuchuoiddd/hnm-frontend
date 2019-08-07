@@ -5,8 +5,9 @@
         </li>
     </ul>
     <div class="row hinh-anh">
-        <div class="col-md-3 image" *ngFor="let item1 of item.hinh_anh">
-            <img src="{{url_mac_dinh}}/{{item1.hinh_anh}}" alt="{{item.tieu_de}}">
+        <div class="col-md-3 image" *ngFor="let item1 of item.hinh_anh;let i=index">
+            <img class="img-detail" src="{{url_mac_dinh}}/{{item1.hinh_anh}}" alt="{{item.tieu_de}}" (click)="open(i)"/>
+            <p><i>{{item1.title ? item1.title : ""}}</i></p>
         </div>
     </div>
 </div>

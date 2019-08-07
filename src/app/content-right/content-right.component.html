@@ -38,7 +38,7 @@
             <img src="{{url_mac_dinh}}/{{thu_vien_hinh_anh[0].bai_viet.hinh_anh ? thu_vien_hinh_anh[0].bai_viet.hinh_anh[0].hinh_anh : ''}}"
                 alt="{{thu_vien_hinh_anh[0].bai_viet.tieu_de ? thu_vien_hinh_anh[0].bai_viet.tieu_de : ''}}">
         </a>
-        <p>{{thu_vien_hinh_anh[0].bai_viet.tieu_de ? thu_vien_hinh_anh[0].bai_viet.tieu_de : ''}}</p>
+        <p><a class="link-image" routerLink="image/{{thu_vien_hinh_anh[0].url}}/{{thu_vien_hinh_anh[0].bai_viet.url}}" >{{thu_vien_hinh_anh[0].bai_viet.tieu_de ? thu_vien_hinh_anh[0].bai_viet.tieu_de : ''}}</a></p>
         <div class="text-right">
             <a [routerLink]="[url]" style="color: white; margin-right: 30px;">Xem tất cả</a>
         </div>
