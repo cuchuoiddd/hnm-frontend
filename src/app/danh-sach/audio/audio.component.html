@@ -4,4 +4,6 @@
         <h3><a class="tieu-de" [routerLink]="['/audio/'+ item.url + '/' + item.bai_viet.url]">{{item.bai_viet.tieu_de}}</a></h3>
         <p class="tieu-de"><i>Tác giả: {{item.bai_viet.tac_gia}}; Thể loại: {{item.bai_viet.the_loai}}</i></p>
     </div>
+    <eui-pagination [total]="total" [pageSize]="pageSize" [pageNumber]="pageNumber"
+        (pageChange)="onPageChange($event)"></eui-pagination>
 </div>

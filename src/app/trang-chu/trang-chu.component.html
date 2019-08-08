@@ -1,14 +1,14 @@
 <div #heightScreen id="boxleft" class="row tin-moi">
-    <div class="block-left col-md-6 col-sm-6 col-xs-12">
+    <div class="block-left col-md-6 col-sm-6 col-xs-12" *ngFor="let item of tin_noi_bat">
         <h2 class="tin-noi-bat">Tin nổi bật</h2>
-        <a [routerLink]="[tin_moi_nhat[0].url ? (tin_moi_nhat[0].url + '/' + tin_moi_nhat[0].bai_viet.url) : '']"><img
-                src="{{url_mac_dinh}}/{{tin_moi_nhat[0].bai_viet.hinh_anh ? tin_moi_nhat[0].bai_viet.hinh_anh[0]['hinh_anh'] : ''}}"
-                alt="{{tin_moi_nhat ? tin_moi_nhat[0].bai_viet.tieu_de : ''}}" /></a>
+        <a [routerLink]="[item.menu ? (item.menu.url + '/' + item.bai_viet.url) : '']"><img
+                src="{{url_mac_dinh}}/{{item.bai_viet.hinh_anh ? item.bai_viet.hinh_anh[0]['hinh_anh'] : ''}}"
+                alt="{{tin_noi_bat ? item.bai_viet.tieu_de : ''}}" /></a>
         <div class="ndtinnoibat">
             <a class="title"
-                [routerLink]="[tin_moi_nhat[0].url ? (tin_moi_nhat[0].url + '/' + tin_moi_nhat[0].bai_viet.url) : '']"
-                routerLinkActive="router-link-active"><b>{{tin_moi_nhat ? tin_moi_nhat[0].bai_viet.tieu_de : ""}}</b></a>
-            <p align="justify">{{tin_moi_nhat ? tin_moi_nhat[0].bai_viet.mo_ta : ""}}</p>
+                [routerLink]="[item.menu ? (item.menu.url + '/' + item.bai_viet.url) : '']"
+                routerLinkActive="router-link-active"><b>{{tin_noi_bat ? item.bai_viet.tieu_de : ""}}</b></a>
+            <p align="justify">{{tin_noi_bat ? item.bai_viet.mo_ta : ""}}</p>
         </div>
     </div>
 
@@ -17,16 +17,17 @@
             <h2 class="titletinmoi group"><a>Tin mới nhất</a></h2>
             <ul class="dongtin">
                 <li *ngFor="let item of ds_tin_moi, let i = index">
-                    <a *ngIf="i!=0" [routerLink]="[item.url + '/' + item.bai_viet.url]"
+                    <a [routerLink]="[item.menu.url + '/' + item.bai_viet.url]"
                         routerLinkActive="router-link-active"><b>{{item.bai_viet.tieu_de}}</b></a>
-                    <p *ngIf="i!=0 && i==1">{{item.bai_viet.mo_ta}}</p>
+                    <p *ngIf="i==0">{{item.bai_viet.mo_ta}}</p>
                 </li>
             </ul>
         </div>
     </div>
 </div>
-<div id="mainleft" class="content-left row">
 
+
+<div id="mainleft" class="content-left row">
     <div class="boxblog group" *ngFor="let item of ds_chuyen_muc">
         <ul class="title1">
             <li>

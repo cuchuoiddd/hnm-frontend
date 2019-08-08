@@ -11,7 +11,7 @@ import { Meta, Title } from '@angular/platform-browser';
 export class DanhSachComponent implements OnInit, OnDestroy {
     total: number = 0;
     pageNumber: number = 1;
-    pageSize: number = 2;
+    pageSize: number = 10;
     param = '';
     data_download = [];
     data_bai_viet = [];
@@ -107,6 +107,7 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                                     this.data_video = s.data;
                                     break;
                                 case "audio":
+                                    console.log(777777777,s)
                                     this.action_audio = true;
                                     this.data_audio = s.data;
                                     break;

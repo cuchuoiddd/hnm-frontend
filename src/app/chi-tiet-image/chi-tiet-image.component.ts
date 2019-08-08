@@ -83,7 +83,7 @@ export class ChiTietImageComponent implements OnInit {
                 const length = this.data[0].hinh_anh.length;
                 const data = this.data[0].hinh_anh;
                 console.log(123131, this.data[0].hinh_anh)
-                for (let i = 1; i <= length; i++) {
+                for (let i = 0; i < length; i++) {
                     console.log(45646456,this.data[i])
                     const src = this.url_mac_dinh +"/"+ (data[i].hinh_anh || "");
                     const caption = data[i].title || "";

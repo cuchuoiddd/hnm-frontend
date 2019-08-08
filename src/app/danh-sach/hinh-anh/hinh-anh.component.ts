@@ -12,8 +12,9 @@ export class HinhAnhComponent implements OnInit,OnChanges {
     data = [];
     ds_ha = [];
     total: number = 0;
+    ten_ds = '';
     pageNumber: number = 1;
-    pageSize: number = 20;
+    pageSize: number = 10;
     id = '';
     @Input('hinh_anh') hinh_anh;
     @Input('type') type;
@@ -37,17 +38,34 @@ export class HinhAnhComponent implements OnInit,OnChanges {
         this.data = this.hinh_anh;
     }
     dsHinhAnh(){
+
         this.gdkClient.queryPublicData({
             reqData:{
-                reqid:'16bacb0eedb',
+                reqid:'16c70d1f514',
                 parms:[this.id]
             }
         }).subscribe(s=>{
+            if(s.ok){
+                this.total = s.data.length;
+            }
+        })
             
+        this.gdkClient.queryPublicData({
+            reqData:{
+                reqid:'16bacb0eedb',
+                parms:[this.id,(this.pageNumber-1)*this.pageSize,this.pageSize]
+            }
+        }).subscribe(s=>{
+            console.log(65454564,s)
             if(s.ok && s.data.length>0){
                 this.ds_ha = s.data;
+                this.ten_ds = s.data[0].ten
             } else { this.ds_ha = [];}
         })
+    }
+    onPageChange(event) {
+        this.pageNumber = event.pageNumber;
+        this.dsHinhAnh();
     }
 
 }

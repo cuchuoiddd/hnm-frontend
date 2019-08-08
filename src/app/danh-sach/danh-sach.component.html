@@ -1,7 +1,8 @@
 <div class="boxblog">
     <app-bai-viet [bai_viet]="data_bai_viet" [total]="total" *ngIf="action_bai_viet"
         (PageChange)="onPageChange($event)"></app-bai-viet>
-    <app-audio [audio]="data_audio" *ngIf="action_audio"></app-audio>
+    <app-audio [audio]="data_audio" [total]="total" *ngIf="action_audio" (PageChange)="onPageChange($event)">
+    </app-audio>
     <app-video [video]="data_video" *ngIf="action_video"></app-video>
     <app-hinh-anh [hinh_anh]="data_hinh_anh" *ngIf="action_hinh_anh"></app-hinh-anh>
     <app-download [download]="data_download" [total]="total" (PageChange)="onPageChange($event)"

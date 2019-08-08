@@ -1,12 +1,14 @@
-<div class="boxblog group" *ngFor="let item of ds_ha">
+<div class="boxblog group" >
     <ul class="title1">
         <li>
-            <h2>{{item.ten}}</h2>
+            <h2>{{ten_ds}}</h2>
         </li>
     </ul>
-    <div class="row" *ngFor="let item1 of item.ds_ha">
-        <h3><a [routerLink]="['/image/'+item.url+'/'+item1.url]">{{item1.tieu_de}}</a></h3>
-        <img src="{{url_mac_dinh}}/{{item1.hinh_anh[0].hinh_anh}}" alt="{{item1.tieu_de}}" style="width: 300px">
+    <div class="row" *ngFor="let item of ds_ha">
+        <h3><a [routerLink]="['/image/'+item.url+'/'+item.bai_viet.url]">{{item.bai_viet.tieu_de}}</a></h3>
+        <img src="{{url_mac_dinh}}/{{item.bai_viet.hinh_anh[0].hinh_anh}}" alt="{{item.bai_viet.tieu_de}}" style="width: 300px">
         <!-- <a><a [routerLink]="['/image/'+item.url+'/'+item1.url]"> Xem chi tiết</a></p> -->
     </div>
+    <eui-pagination [total]="total" [pageSize]="pageSize" [pageNumber]="pageNumber"
+        (pageChange)="onPageChange($event)"></eui-pagination>
 </div>

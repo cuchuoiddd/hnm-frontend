@@ -12,18 +12,16 @@ export class TrangChuComponent implements OnInit {
     ds_chuyen_muc = [];
     ds_tin_moi = [];
     url_mac_dinh = 'http://hoi-nguoi-mu.gdk.com.vn';
-    tin_moi_nhat = [{
-        bai_viet: { hinh_anh: '', tieu_de: '', mo_ta: '', url: '' },
-        url: ''
-    }];
+    tin_noi_bat = [];
     min_height = 0;
     @ViewChild('heightScreen') heightScreen;
 
-    constructor(private gdkClient: GdkHttpClientService,private meta: Meta, private titleService: Title) { }
+    constructor(private gdkClient: GdkHttpClientService, private meta: Meta, private titleService: Title) { }
 
     ngOnInit() {
         this.dsChuyenMuc();
         this.dsTinMoiNhat();
+        this.tinNoiBat();
         setTimeout(() => {
             this.min_height = this.heightScreen.nativeElement.offsetHeight;
         }, 1000);
@@ -63,21 +61,29 @@ export class TrangChuComponent implements OnInit {
         }
         return rs;
     };
+    tinNoiBat() {
+        this.gdkClient.queryPublicData({
+            reqData: {
+                reqid: '16c703ba4e2'
+            }
+        }).subscribe(s => {
+            console.log(9879797,s)
+            if (s.ok && s.data.length > 0) {
+                this.tin_noi_bat = s.data;
+            } else { this.tin_noi_bat = [] }
+        })
+    }
     dsTinMoiNhat() {
         this.gdkClient.queryPublicData({
             reqData: {
                 reqid: '16b44583d45'
             }
         }).subscribe(s => {
+            console.log(664545645,s)
             if (s.ok && s.data.length > 0) {
                 this.ds_tin_moi = s.data;
-                this.tin_moi_nhat = s.data;
             } else {
-            this.ds_tin_moi = [];
-                this.tin_moi_nhat = [{
-                    bai_viet: { hinh_anh: '', tieu_de: '', mo_ta: '', url: '' },
-                    url: ''
-                }]
+                this.ds_tin_moi = [];
             }
         })
     }
