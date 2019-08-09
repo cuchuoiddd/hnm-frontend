@@ -20,11 +20,6 @@ export class AppComponent implements OnInit {
         const DateObj = new Date();
         this.ngay = ('0' + DateObj.getDate()).slice(-2);
         this.thang = ('0' + (DateObj.getMonth() + 1)).slice(-2);
-        console.log((DateObj.getMonth() + 1))
-        // const thang1 =  parseInt(this.thang);
-        // if(thang1 > 2){
-
-        // }
         this.nam = DateObj.getFullYear();
     }
     getCauHinh() {

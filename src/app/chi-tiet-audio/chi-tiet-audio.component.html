@@ -14,7 +14,11 @@
                 <h2>{{item.tieu_de}} </h2>
             </li>
         </ul>
-        <p class="tacgia-theloai"><i>Tác giả: {{item.tac_gia}}, Thể loại: {{item.the_loai}}</i></p>
+        <p class="tacgia-theloai"><i>
+                <span *ngIf="item.tac_gia">Tác giả: {{item.tac_gia}}</span>
+                <span *ngIf="item.the_loai">, Thể loại: {{item.the_loai}}</span>
+                <span *ngIf="item.nguoi_bieu_dien">, Người biểu diễn: {{item.nguoi_bieu_dien}}</span>
+            </i></p>
         <!-- <div class="" *ngIf="chi_tiet_audio">
                 <iframe width="100%" height="auto" [src]="chi_tiet_audio" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
@@ -31,7 +35,8 @@
                     <h3>
                         <!-- <a [routerLink]="[item.bai_viet.url]" routerLinkActive="router-link-active" >{{item.bai_viet.tieu_de}}</a> -->
                         <!-- <a href="{{url_mac_dinh}}/{{item1.link}}" class="btn btn-primary"  target="_blank">Đọc</a> -->
-                        <a href="{{url_mac_dinh}}/{{item1.link}}" class="btn btn-primary" target="_blank" [download]="'vidu.mp3'">Tải về</a>
+                        <a href="{{url_mac_dinh}}/{{item1.link}}" class="btn btn-primary" target="_blank"
+                            [download]="'vidu.mp3'">Tải về</a>
                     </h3>
 
                 </div>

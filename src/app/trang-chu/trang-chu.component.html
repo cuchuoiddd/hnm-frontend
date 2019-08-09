@@ -1,7 +1,7 @@
 <div #heightScreen id="boxleft" class="row tin-moi">
     <div class="block-left col-md-6 col-sm-6 col-xs-12" *ngFor="let item of tin_noi_bat">
         <h2 class="tin-noi-bat">Tin nổi bật</h2>
-        <a [routerLink]="[item.menu ? (item.menu.url + '/' + item.bai_viet.url) : '']"><img
+        <a *ngIf="item.hinh_anh && item.hinh_anh.length > 0" [routerLink]="[item.menu ? (item.menu.url + '/' + item.bai_viet.url) : '']"><img
                 src="{{url_mac_dinh}}/{{item.bai_viet.hinh_anh ? item.bai_viet.hinh_anh[0]['hinh_anh'] : ''}}"
                 alt="{{tin_noi_bat ? item.bai_viet.tieu_de : ''}}" /></a>
         <div class="ndtinnoibat">

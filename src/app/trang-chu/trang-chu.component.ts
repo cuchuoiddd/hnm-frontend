@@ -67,7 +67,6 @@ export class TrangChuComponent implements OnInit {
                 reqid: '16c703ba4e2'
             }
         }).subscribe(s => {
-            console.log(9879797,s)
             if (s.ok && s.data.length > 0) {
                 this.tin_noi_bat = s.data;
             } else { this.tin_noi_bat = [] }
@@ -79,7 +78,6 @@ export class TrangChuComponent implements OnInit {
                 reqid: '16b44583d45'
             }
         }).subscribe(s => {
-            console.log(664545645,s)
             if (s.ok && s.data.length > 0) {
                 this.ds_tin_moi = s.data;
             } else {

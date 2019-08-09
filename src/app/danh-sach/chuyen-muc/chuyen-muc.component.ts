@@ -22,7 +22,6 @@ export class ChuyenMucComponent implements OnInit,OnChanges {
         //Add '${implements OnChanges}' to the class.
         this.data = this.chuyen_muc;
         this.check_van_ban = this.chuyen_muc[0].url =='van-ban' ? true : false;
-        console.log(111111,this.data)
     }
 
 

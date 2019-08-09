@@ -72,7 +72,6 @@ export class ChiTietImageComponent implements OnInit {
             }
         }).subscribe(s => {
             if (s.ok && s.data.length > 0) {
-                console.log(646454, s)
                 this.title = s.data[0].tieu_de || '';
                 const mo_ta = s.data[0].mo_ta || '';
                 this.titleService.setTitle(this.title);
@@ -82,9 +81,7 @@ export class ChiTietImageComponent implements OnInit {
 
                 const length = this.data[0].hinh_anh.length;
                 const data = this.data[0].hinh_anh;
-                console.log(123131, this.data[0].hinh_anh)
                 for (let i = 0; i < length; i++) {
-                    console.log(45646456,this.data[i])
                     const src = this.url_mac_dinh +"/"+ (data[i].hinh_anh || "");
                     const caption = data[i].title || "";
                     const thumb = this.url_mac_dinh +"/"+ (data[i].hinh_anh || "");

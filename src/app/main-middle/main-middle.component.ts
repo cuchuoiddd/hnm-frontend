@@ -21,6 +21,11 @@ export class MainMiddleComponent implements OnInit {
     data_lienket = [];
     van_hoc_nghe_thuat = [];
     hinh_anh_active = 0;
+
+    //tin khac
+    tin_khac = [];
+    bai_viet = [];
+
     constructor(private gdkClient: GdkHttpClientService) { }
 
     ngOnInit() {
@@ -28,6 +33,7 @@ export class MainMiddleComponent implements OnInit {
         this.dsChuyenMucKhac();
         this.lienKetWeb();
         this.vanHocNgheThuat();
+        this.getTinKhac();
     }
     hinhAnh() {
         this.gdkClient.queryPublicData({
@@ -78,6 +84,15 @@ export class MainMiddleComponent implements OnInit {
             }
         }).subscribe(s => {
             if (s.ok && s.data.length > 0) { this.chuyen_muc_khac = s.data } else { this.chuyen_muc_khac = [] }
+        })
+    }
+    getTinKhac(){
+        this.gdkClient.queryPublicData({
+            reqData: {
+                reqid: '16c742819b3'
+            }
+        }).subscribe(s => {
+            if (s.ok && s.data.length > 0) { this.tin_khac = s.data; this.bai_viet = s.data[0].bai_viet;} else { this.tin_khac = [] }
         })
     }
     lienKetWeb() {

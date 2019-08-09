@@ -22,7 +22,6 @@ export class DownloadComponent implements OnInit, OnChanges {
         //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
         //Add '${implements OnChanges}' to the class.
         this.data = this.data_download;
-        console.log(32131, this.data_download)
         this.total = this.total_download;
     }
     onPageChange(event) {

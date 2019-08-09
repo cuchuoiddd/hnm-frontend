@@ -65,7 +65,6 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                             parms: [this.param]
                         }
                     }).subscribe(s => {
-                        console.log(34234,s)
                         if (s.ok && s.data.length > 0) {
                             this.action_chuyen_muc = true;
                             this.data_chuyen_muc = s.data;
@@ -76,9 +75,6 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                         }
                     })
                 } 
-                // else if(sc.data[0].phan_loai == 'nguoi_mu_sang_tac' || 'nguoi_mu_bieu_dien') {
-                //     console.log(7897987)
-                // }
                 else {
                     this.gdkClient.queryPublicData({
                         reqData: {
@@ -88,7 +84,6 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                     }).subscribe(s => {
                         if (s.ok && s.data.length > 0) {
                             const phan_loai = s.data[0].phan_loai;
-                            console.log(98789797,phan_loai);
                             switch (phan_loai) {
                                 case 'bai_viet':
                                     this.action_bai_viet = true;
@@ -107,7 +102,6 @@ export class DanhSachComponent implements OnInit, OnDestroy {
                                     this.data_video = s.data;
                                     break;
                                 case "audio":
-                                    console.log(777777777,s)
                                     this.action_audio = true;
                                     this.data_audio = s.data;
                                     break;

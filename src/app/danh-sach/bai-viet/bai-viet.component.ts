@@ -19,7 +19,6 @@ export class BaiVietComponent implements OnInit,OnChanges {
     @Output() PageChange = new EventEmitter(); 
     constructor() { }
     ngOnInit() {
-        console.log(1231321231)
     }
     onPageChange(event) {
         this.PageChange.emit(event);

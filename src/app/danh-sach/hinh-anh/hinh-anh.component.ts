@@ -56,7 +56,6 @@ export class HinhAnhComponent implements OnInit,OnChanges {
                 parms:[this.id,(this.pageNumber-1)*this.pageSize,this.pageSize]
             }
         }).subscribe(s=>{
-            console.log(65454564,s)
             if(s.ok && s.data.length>0){
                 this.ds_ha = s.data;
                 this.ten_ds = s.data[0].ten

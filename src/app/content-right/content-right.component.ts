@@ -54,7 +54,6 @@ export class ContentRightComponent implements OnInit {
             }
         }).subscribe(s => {
             if (s.ok && s.data.length > 0) { 
-                console.log(21323,s.data)
                 this.data = s.data; 
                 this.thu_vien_hinh_anh = [];
                 this.url = s.data[0].url;
