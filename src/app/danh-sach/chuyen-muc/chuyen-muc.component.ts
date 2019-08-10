@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { GdkHttpClientService } from '@gdkmd/httpxhd';
 
 @Component({
     selector: 'app-chuyen-muc',
@@ -11,9 +12,16 @@ export class ChuyenMucComponent implements OnInit,OnChanges {
     url = '';
     url_mac_dinh = 'http://hoi-nguoi-mu.gdk.com.vn';
     check_van_ban = false;
+
+    data_reset = [];
+    search_category = '';
+    search_author = '';
+    param_chuyen_muc = '';
+
     @Input('chuyen_muc') chuyen_muc;
     @Input('type') type;
-    constructor() { }
+    @Input('param') param;
+    constructor(private gdkClient: GdkHttpClientService) { }
 
     ngOnInit() {
     }
@@ -21,10 +29,30 @@ export class ChuyenMucComponent implements OnInit,OnChanges {
         //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
         //Add '${implements OnChanges}' to the class.
         this.data = this.chuyen_muc;
+        this.data_reset = this.chuyen_muc;
+        this.param_chuyen_muc = this.param;
+        console.log(423425,this.param_chuyen_muc);
         this.check_van_ban = this.chuyen_muc[0].url =='van-ban' ? true : false;
     }
 
-
+    search(tac_gia) {
+        tac_gia == true ? this.search_category = '' : this.search_author = '';
+        this.gdkClient.queryPublicData({
+            reqData: {
+                reqid: '16c7b41a3f6',
+                parms: [this.param_chuyen_muc, this.search_author, this.search_category ]
+            }
+        }).subscribe(s => {
+            if (s.ok && s.data.length > 0) {
+                this.data = s.data;
+            } else { this.data = [] }
+        })
+    }
+    reset(){
+        this.data = this.data_reset;
+        this.search_author = '';
+        this.search_category = '';
+    }
 
 
 

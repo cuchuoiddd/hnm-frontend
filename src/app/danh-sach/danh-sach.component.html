@@ -8,5 +8,5 @@
     <app-download [download]="data_download" [total]="total" (PageChange)="onPageChange($event)"
         *ngIf="action_download"></app-download>
     <app-chi-tiet [chi_tiet]="data_chi_tiet" *ngIf="action_chi_tiet"></app-chi-tiet>
-    <app-chuyen-muc [chuyen_muc]="data_chuyen_muc" *ngIf="action_chuyen_muc"></app-chuyen-muc>
+    <app-chuyen-muc [param]="param" [chuyen_muc]="data_chuyen_muc" *ngIf="action_chuyen_muc"></app-chuyen-muc>
 </div>
