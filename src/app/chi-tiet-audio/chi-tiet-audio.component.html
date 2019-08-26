@@ -1,13 +1,4 @@
 <div class="">
-    <!-- <div class="search form-group">
-        <input type="text" class="search-input" [(ngModel)]="search_category"> <button class="btn btn-primary btn-sm"
-            (click)="search(false)">Tìm theo thể loại</button>
-    </div>
-    <div class="search search-author form-group">
-        <input type="text" class="search-input" [(ngModel)]="search_author">
-        <button class="btn btn-primary btn-sm" (click)="search(true)">Tìm theo tác giả</button>
-        <button class="btn btn-primary btn-sm" (click)="reset()">Reset</button>
-    </div> -->
     <div class="boxblog group" *ngFor="let item of data">
         <ul class="title1">
             <li>
@@ -19,22 +10,13 @@
                 <span *ngIf="item.the_loai">, Thể loại: {{item.the_loai}}</span>
                 <span *ngIf="item.nguoi_bieu_dien">, Người biểu diễn: {{item.nguoi_bieu_dien}}</span>
             </i></p>
-        <!-- <div class="" *ngIf="chi_tiet_audio">
-                <iframe width="100%" height="auto" [src]="chi_tiet_audio" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-        </div> -->
         <div class="blog group">
             <div class="row" *ngFor="let item1 of item.link_audio">
                 <div class="block-left col-md-6 col-sm-6 col-xs-6">
-                    <!-- <a [routerLink]="[item.bai_viet.url]" routerLinkActive="router-link-active"><img
-                        src="{{url_mac_dinh}}/{{item.bai_viet.hinh_anh ? item.bai_viet.hinh_anh[0].hinh_anh:'' }}"
-                        alt=""></a> -->
-                    <a href="{{url_mac_dinh}}/{{item1.link}}">{{item1.title}}</a>
+                    <a href="{{url_mac_dinh}}/{{item1.link}}" target="_blank">{{item1.title}}</a>
                 </div>
                 <div class="block-right col-md-6 col-sm-6 col-xs-6">
                     <h3>
-                        <!-- <a [routerLink]="[item.bai_viet.url]" routerLinkActive="router-link-active" >{{item.bai_viet.tieu_de}}</a> -->
-                        <!-- <a href="{{url_mac_dinh}}/{{item1.link}}" class="btn btn-primary"  target="_blank">Đọc</a> -->
                         <a href="{{url_mac_dinh}}/{{item1.link}}" class="btn btn-primary" target="_blank"
                             [download]="'vidu.mp3'">Tải về</a>
                     </h3>
@@ -42,7 +24,5 @@
                 </div>
             </div>
         </div>
-        <!-- <eui-pagination [total]="total" [pageSize]="pageSize" [pageNumber]="pageNumber"
-        (pageChange)="onPageChange($event)"></eui-pagination> -->
     </div>
 </div>

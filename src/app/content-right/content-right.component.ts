@@ -40,11 +40,11 @@ export class ContentRightComponent implements OnInit {
                 this.url_video = s.data[0].url;
                 const video = s.data[0].bai_viet.link[0].link;
                 this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(video);
-            } else { this.ds_video = []; this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/yaT3_WFkvI4') }
+            } else { this.ds_video = []; this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/yaT3_WFkvI4?feature=oembed&showinfo=0') }
         })
     }
     clickVideo(item) {
-        this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(item.bai_viet.link[0].link);
+        this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(item.bai_viet.link[0].link + "?feature=oembed&showinfo=0") ;
     }
 
     hinhAnh() {

@@ -25,8 +25,8 @@ export class TrangChuComponent implements OnInit {
         setTimeout(() => {
             this.min_height = this.heightScreen.nativeElement.offsetHeight;
         }, 1000);
-        this.titleService.setTitle('Hội người mù Việt Nam');
-        this.meta.updateTag({ name: "description", content: 'Hội người mù Việt Nam' });
+        this.titleService.setTitle('Hội Người Mù Việt Nam');
+        this.meta.updateTag({ name: "description", content: 'Hội Người Mù Việt Nam' });
     }
     dsChuyenMuc() {
         this.gdkClient.queryPublicData({
@@ -67,6 +67,7 @@ export class TrangChuComponent implements OnInit {
                 reqid: '16c703ba4e2'
             }
         }).subscribe(s => {
+            console.log(4325345345,s)
             if (s.ok && s.data.length > 0) {
                 this.tin_noi_bat = s.data;
             } else { this.tin_noi_bat = [] }

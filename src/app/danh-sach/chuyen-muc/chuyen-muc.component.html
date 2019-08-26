@@ -1,4 +1,4 @@
-<div> 
+<div *ngIf="param == 'thu-vien'"> 
     <div class="search form-group">
         <input type="text" class="search-input" [(ngModel)]="search_category"> <button class="btn btn-primary btn-sm"
             (click)="search(false)">Tìm theo thể loại</button>
