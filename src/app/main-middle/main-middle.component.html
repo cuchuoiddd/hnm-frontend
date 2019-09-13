@@ -8,7 +8,7 @@
         <div class="contentmiddle3" *ngFor="let item1 of item.bai_viet">
             <img *ngIf="item1.hinh_anh && item1.hinh_anh.length > 0" src="{{url_mac_dinh}}/{{item1.hinh_anh[0].hinh_anh}}" alt="{{item1.tieu_de}}" class="img-baiviet">
             <a [routerLink]="[item.url +'/'+ item1.url]" routerLinkActive="router-link-active">
-                <strong>{{item1.tieu_de}} </strong>
+                <strong>{{item1.tieu_de}}</strong>
             </a>
             <p>{{item1.mo_ta}}</p>
         </div>
