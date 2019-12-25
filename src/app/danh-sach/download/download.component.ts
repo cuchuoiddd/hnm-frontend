@@ -9,7 +9,7 @@ export class DownloadComponent implements OnInit, OnChanges {
     data = [];
     total: number = 1;
     pageNumber: number = 1;
-    pageSize: number = 20;
+    pageSize: number = 10;
     url_mac_dinh = 'http://hoi-nguoi-mu.gdk.com.vn';
     @Input('download') data_download;
     @Input('total') total_download;

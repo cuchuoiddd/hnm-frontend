@@ -48,7 +48,6 @@ export class DanhSachComponent implements OnInit, OnDestroy {
         }).subscribe(s => {
             if (s.ok && s.data.length > 0) {
                 this.total = s.data.length;
-
             } else { this.total = 0 }
         })
         this.gdkClient.queryPublicData({
